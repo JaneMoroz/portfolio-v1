@@ -1,0 +1,139 @@
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%; 
+}
+
+:root {
+  /* COLORS */
+  /* LIGHT MODE */
+  --color-dark-pink: #f59d9b;
+  --color-light-pink:#f5cac3;
+  --color-accent-pink: #f7ede2;
+  --color-yellow: #fbdc8e;
+  --color-blue: #3e6598;
+  --color-green: #84a59d;
+  --color-clouds: #ffffff;
+  --color-hill-big: #e2e2e2;
+  --color-hill-small: #efefef;
+  --color-lamp-main: #4a4e69;
+  --color-program: #efefef;
+
+  --color-text-main: #ffffff;
+  --color-text-secondary: #746c6c;
+  --color-background-1: #ffffff
+  --color-background-2: #84a59d;
+
+  /*BOX SHADOWS */
+  --shadow: 2px 2px 6px rgba(0, 0, 0, 0.125);
+
+  /* TYPOGRAPHY */
+  --main-font: 'Montserrat', sans-serif;
+  --accent-font: 'Fascinate', cursive;
+}
+
+body {
+  background: var(--color-background-1);
+  color: var(--color-text-secondary);
+  font-family: var(--main-font);
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+/* TYPOGRAPHY */
+
+h1{
+  font-size: 3.2rem;
+  font-weight: 300;
+  color: var(--color-text-main);
+}
+
+h1 span {
+  font-family: var(--accent-font);
+  font-size: 4rem;
+  color: var(--color-dark-pink);
+  text-transform: capitalize;
+}
+
+h2 {
+  font-family: var(--accent-font);
+  text-transform: lowercase;
+  font-size: 4rem;
+  color:var(--color-green)
+}
+
+h3 {
+  font-size: 2.4rem;
+}
+
+h4 {
+  font-size: 2rem;
+  color: var(--color-text-main);
+}
+
+h5, h5 span {
+  font-size: 1.8rem;
+  font-weight: 500;
+  text-transform: lowercase;
+}
+
+h5 span {
+  color: var(--color-dark-pink);
+}
+
+/* BUTTONS */
+
+button, .btn {
+  cursor: pointer;
+  appearance: none;
+  border: none;
+}
+
+.btn-outlined {
+  font-size: 2rem;
+  text-transform: capitalize;
+  background: transparent;
+  color: var(--color-dark-pink);
+  padding: 1.2rem 2.4rem;
+  box-shadow: var(--shadow);
+  border: 2px solid var(--color-dark-pink);
+}
+
+.btn-text {
+  color: var(--color-dark-pink);
+}
+
+.btn-icon {
+  font-size: 2rem;
+  color: var(--color-dark-pink);
+}
+
+/* FORM */
+
+.form {
+  width: 100%;
+  padding: 2rem 2.5rem;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  background: transparent;
+  border: 2px solid var(--color-text-main);
+}
+.form-row {
+  margin-bottom: 1rem;
+}
+textarea {
+  width: 100%;
+  height: 7rem;
+}
+
+::placeholder {
+  color: var(--color-text-main);
+}
