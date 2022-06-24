@@ -1,18 +1,20 @@
 *,
 ::after,
 ::before {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 html {
-  font-size: 62.5%; 
+  font-size: 62.5%;
 }
 
 :root {
   /* COLORS */
   /* LIGHT MODE */
   --color-dark-pink: #f59d9b;
-  --color-light-pink:#f5cac3;
+  --color-light-pink: #f5cac3;
   --color-accent-pink: #f7ede2;
   --color-yellow: #fbdc8e;
   --color-blue: #3e6598;
@@ -25,15 +27,15 @@ html {
 
   --color-text-main: #ffffff;
   --color-text-secondary: #746c6c;
-  --color-background-1: #ffffff
+  --color-background-1: #ffffff;
   --color-background-2: #84a59d;
 
   /*BOX SHADOWS */
   --shadow: 2px 2px 6px rgba(0, 0, 0, 0.125);
 
   /* TYPOGRAPHY */
-  --main-font: 'Montserrat', sans-serif;
-  --accent-font: 'Fascinate', cursive;
+  --main-font: "Montserrat", sans-serif;
+  --accent-font: "Fascinate", cursive;
 }
 
 body {
@@ -42,14 +44,17 @@ body {
   font-family: var(--main-font);
   font-size: 1.6rem;
   font-weight: 400;
+  letter-spacing: 0.6px;
+  overflow-x: hidden;
 }
 
 /* TYPOGRAPHY */
 
-h1{
+h1 {
   font-size: 3.2rem;
   font-weight: 300;
   color: var(--color-text-main);
+  margin: 0 0 1rem 0;
 }
 
 h1 span {
@@ -63,7 +68,7 @@ h2 {
   font-family: var(--accent-font);
   text-transform: lowercase;
   font-size: 4rem;
-  color:var(--color-green)
+  color: var(--color-green);
 }
 
 h3 {
@@ -72,10 +77,14 @@ h3 {
 
 h4 {
   font-size: 2rem;
+  font-weight: 400;
+  line-height: 1.5;
   color: var(--color-text-main);
+  margin: 3.6rem 0 2.4rem 0;
 }
 
-h5, h5 span {
+h5,
+h5 span {
   font-size: 1.8rem;
   font-weight: 500;
   text-transform: lowercase;
@@ -87,16 +96,17 @@ h5 span {
 
 /* BUTTONS */
 
-button, .btn {
+button,
+.btn {
   cursor: pointer;
   appearance: none;
   border: none;
+  background: transparent;
 }
 
 .btn-outlined {
   font-size: 2rem;
   text-transform: capitalize;
-  background: transparent;
   color: var(--color-dark-pink);
   padding: 1.2rem 2.4rem;
   box-shadow: var(--shadow);
@@ -136,4 +146,11 @@ textarea {
 
 ::placeholder {
   color: var(--color-text-main);
+}
+
+/* LAYOUT */
+
+.container {
+  max-width: 114rem;
+  margin: 0 auto;
 }
