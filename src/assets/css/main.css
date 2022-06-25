@@ -10,12 +10,25 @@ html {
   font-size: 62.5%;
 }
 
+@media only screen and (max-width: 75em) {
+  html {
+    font-size: 56.25%;
+  }
+}
+
+@media only screen and (max-width: 56.25em) {
+  html {
+    font-size: 50%;
+  }
+}
+
 :root {
   /* COLORS */
   /* LIGHT MODE */
   --color-dark-pink: #f59d9b;
   --color-light-pink: #f5cac3;
   --color-accent-pink: #f7ede2;
+  --color-accent-pink-transparent: rgba(247, 237, 226, 0.8);
   --color-yellow: #fbdc8e;
   --color-blue: #3e6598;
   --color-green: #84a59d;
@@ -73,11 +86,13 @@ h2 {
 
 h3 {
   font-size: 2.4rem;
+  font-weight: 300;
+  text-transform: capitalize;
 }
 
 h4 {
   font-size: 2rem;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 1.5;
   color: var(--color-text-main);
   margin: 3.6rem 0 2.4rem 0;
@@ -105,12 +120,34 @@ button,
 }
 
 .btn-outlined {
+  position: relative;
   font-size: 2rem;
   text-transform: capitalize;
   color: var(--color-dark-pink);
-  padding: 1.2rem 2.4rem;
-  box-shadow: var(--shadow);
+  padding: 1.4rem 2.4rem;
+  /* box-shadow: var(--shadow);
+  border: 2px solid var(--color-dark-pink); */
+}
+
+.btn-outlined::after,
+.btn-outlined::before {
+  content: "";
+  position: absolute;
   border: 2px solid var(--color-dark-pink);
+  width: calc(100% - 4px);
+  height: calc(100% - 4px);
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+  transition: transform 0.3s ease;
+}
+
+.btn-outlined:hover::after {
+  transform: translate(-5px, -5px);
+}
+
+.btn-outlined:hover::before {
+  transform: translate(5px, 5px);
 }
 
 .btn-text {
