@@ -78,8 +78,9 @@ const Wrapper = styled.section`
   height: 75rem;
   width: 100%;
   background-color: var(--color-background-2);
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
-  clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+  overflow: hidden;
 
   .hero {
     position: relative;

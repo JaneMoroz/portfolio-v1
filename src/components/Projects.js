@@ -100,6 +100,7 @@ const Wrapper = styled.section`
       position: relative;
       width: 80rem;
       height: 100%;
+      box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
 
       img {
         height: 100%;
@@ -161,6 +162,7 @@ const Wrapper = styled.section`
         background: var(--color-background-2);
         color: var(--color-text-main);
         line-height: 1.5;
+        box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
       }
 
       .buttons {

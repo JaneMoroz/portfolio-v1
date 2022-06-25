@@ -140,6 +140,7 @@ const Wrapper = styled.section`
     border: 2px solid var(--color-program);
     max-width: 80rem;
     margin: 4.8rem auto;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
 
     .program-header {
       display: flex;
