@@ -71,6 +71,12 @@ const Wrapper = styled.section`
     z-index: -1;
   }
 
+  @media only screen and (max-width: 56.25em) {
+    .background {
+      display: none;
+    }
+  }
+
   .projects-nav {
     position: relative;
     display: flex;

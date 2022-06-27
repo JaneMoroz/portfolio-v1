@@ -77,7 +77,7 @@ const Footer = () => {
 }
 
 const Wrapper = styled.section`
-  height: 70rem;
+  height: 65rem;
   width: 100%;
   background-color: var(--color-background-2);
   -webkit-clip-path: polygon(0 20%, 100% 0, 100% 100%, 0 100%);
@@ -107,7 +107,6 @@ const Wrapper = styled.section`
   .btn {
     align-self: center;
     z-index: 10;
-    background: var(--color-background-2);
   }
 
   .social {

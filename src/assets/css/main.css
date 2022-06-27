@@ -173,7 +173,7 @@ input,
 textarea {
   width: 100%;
   padding: 1rem 2rem;
-  background: var(--color-background-2);
+  background: transparent;
   border: 2px solid var(--color-text-main);
   color: var(--color-text-main);
 }
@@ -183,7 +183,7 @@ textarea {
 textarea {
   width: 100%;
   height: 7rem;
-  background: var(--color-background-2);
+  background: transparent;
 }
 
 ::placeholder {

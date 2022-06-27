@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import background1 from "../assets/images/Background-1.svg"
 import background2 from "../assets/images/Background-2.svg"
@@ -8,24 +8,65 @@ import background5 from "../assets/images/Background-5.svg"
 import background6 from "../assets/images/Background-6.svg"
 import background7 from "../assets/images/Background-7.svg"
 import light from "../assets/images/Light.svg"
+import background1DarkMode from "../assets/images/Background-1-dark-mode.svg"
+import background2DarkMode from "../assets/images/Background-2-dark-mode.svg"
+import background3DarkMode from "../assets/images/Background-3-dark-mode.svg"
+import background4DarkMode from "../assets/images/Background-4-dark-mode.svg"
+import background5DarkMode from "../assets/images/Background-5-dark-mode.svg"
+import background6DarkMode from "../assets/images/Background-6-dark-mode.svg"
+import background7DarkMode from "../assets/images/Background-7-dark-mode.svg"
+import lightDarkMode from "../assets/images/Light-dark-mode.svg"
 import { FaBars } from "react-icons/fa"
+import { motion } from "framer-motion"
 
 const Hero = () => {
+  const [darkMode, setDarkMode] = useState(true)
   return (
     <Wrapper>
       <div className="hero container">
         {/* dark/light mode button */}
-        <button className="btn dark-light-mode-btn">
-          <img src={light} alt="dark/light mode button" />
+        <button
+          className="btn dark-light-mode-btn"
+          onClick={() => {
+            setDarkMode(!darkMode)
+          }}
+        >
+          {!darkMode && (
+            <motion.img
+              whileHover={{
+                rotateZ: 5,
+              }}
+              src={light}
+              alt="dark/light mode button"
+            />
+          )}
+          {darkMode && (
+            <motion.img
+              whileHover={{
+                rotateZ: 5,
+              }}
+              src={lightDarkMode}
+              alt="dark/light mode button"
+            />
+          )}
         </button>
         {/* menu button */}
-        <button className="btn menu-btn">
+        <motion.button
+          whileHover={{
+            boxShadow: "0px 0px 8px rgb(245, 201, 194)",
+          }}
+          className="btn menu-btn"
+        >
           <span>
             <FaBars />
           </span>
-        </button>
+        </motion.button>
         {/* text */}
-        <div className="hero-text">
+        <motion.div
+          initial={{ x: "-100vw", opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          className="hero-text"
+        >
           <div className="text-box">
             <h1>
               Hi, my name is <span>Jane</span>.
@@ -37,37 +78,134 @@ const Hero = () => {
             </h4>
             <button className="btn btn-outlined">resume</button>
           </div>
-        </div>
+        </motion.div>
         {/* images */}
         <div className="hero-images">
           {/* small hill with plant */}
-          <div className="background background-1">
-            <img src={background1} alt="background 1" />
-          </div>
+          {!darkMode && (
+            <motion.div
+              initial={{ y: 200 }}
+              animate={{ y: 0 }}
+              transition={{ delay: 0.5 }}
+              className="background background-1"
+            >
+              <img src={background1} alt="background 1" />
+            </motion.div>
+          )}
+          {darkMode && (
+            <motion.div
+              initial={{ y: 200 }}
+              animate={{ y: 0 }}
+              transition={{ delay: 0.5 }}
+              className="background background-1"
+            >
+              <img src={background1DarkMode} alt="background 1" />
+            </motion.div>
+          )}
           {/* girl */}
-          <div className="background background-2">
-            <img src={background2} alt="background 2" />
-          </div>
+          {!darkMode && (
+            <motion.div
+              initial={{ x: "50vw" }}
+              animate={{ x: 0 }}
+              transition={{
+                delay: 1,
+              }}
+              className="background background-2"
+            >
+              <img src={background2} alt="background 2" />
+            </motion.div>
+          )}
+          {darkMode && (
+            <motion.div
+              initial={{ x: "50vw" }}
+              animate={{ x: 0 }}
+              transition={{
+                delay: 1,
+              }}
+              className="background background-2-dark-mode"
+            >
+              <img src={background2DarkMode} alt="background 2" />
+            </motion.div>
+          )}
           {/* big hill */}
-          <div className="background background-3">
-            <img src={background3} alt="background 3" />
-          </div>
+          {!darkMode && (
+            <motion.div
+              initial={{ y: 200 }}
+              animate={{ y: 0 }}
+              className="background background-3"
+            >
+              <img src={background3} alt="background 3" />
+            </motion.div>
+          )}
+          {darkMode && (
+            <motion.div
+              initial={{ y: 200 }}
+              animate={{ y: 0 }}
+              className="background background-3"
+            >
+              <img src={background3DarkMode} alt="background 3" />
+            </motion.div>
+          )}
           {/* tree */}
-          <div className="background background-4">
-            <img src={background4} alt="background 4" />
-          </div>
+          {!darkMode && (
+            <motion.div
+              initial={{ y: 50 }}
+              animate={{ y: 0 }}
+              className="background background-4"
+            >
+              <img src={background4} alt="background 4" />
+            </motion.div>
+          )}
+          {darkMode && (
+            <motion.div
+              initial={{ y: 50 }}
+              animate={{ y: 0 }}
+              className="background background-4"
+            >
+              <img src={background4DarkMode} alt="background 4" />
+            </motion.div>
+          )}
           {/* big cloud */}
-          <div className="background background-5">
-            <img src={background5} alt="background 5" />
-          </div>
+          {!darkMode && (
+            <div className="background background-5">
+              <img src={background5} alt="background 5" />
+            </div>
+          )}
+          {darkMode && (
+            <div className="background background-5">
+              <img src={background5DarkMode} alt="background 5" />
+            </div>
+          )}
           {/* sun/moon */}
-          <div className="background background-6">
-            <img src={background6} alt="background 6" />
-          </div>
+          {!darkMode && (
+            <motion.div
+              initial={{ scale: 0.9 }}
+              animate={{ scale: 1 }}
+              className="background background-6"
+            >
+              <img src={background6} alt="background 6" />
+            </motion.div>
+          )}
+          {darkMode && (
+            <motion.div
+              initial={{ scale: 0.9 }}
+              animate={{ scale: 1 }}
+              className="background background-6"
+            >
+              <img src={background6DarkMode} alt="background 6" />
+            </motion.div>
+          )}
           {/* small cloud */}
-          <div className="background background-7">
-            <img src={background7} alt="background 7" />
-          </div>
+          {!darkMode && (
+            <div className="background background-7">
+              <img src={background7} alt="background 7" />
+            </div>
+          )}
+          {darkMode && (
+            <div className="background background-7">
+              <img src={background7DarkMode} alt="background 7" />
+            </div>
+          )}
         </div>
       </div>
     </Wrapper>
@@ -166,70 +304,89 @@ const Wrapper = styled.section`
 
     // small hill with plant
     .background-1 {
-      top: 0;
-      left: 0;
-      transform: translate(25%, 90%);
+      top: 60%;
+      left: 20%;
       z-index: 7;
     }
 
     @media only screen and (max-width: 56.25em) {
       .background-1 {
-        transform: translate(5%, 50%);
-        z-index: 4;
+        top: 65%;
+        left: -160%;
       }
     }
 
     @media only screen and (max-width: 37.5em) {
       .background-1 {
-        transform: translate(-65%, 80%);
+        top: 70%;
+        left: -550%;
       }
     }
 
     // girl
     .background-2 {
-      top: 0;
-      left: 0;
-      transform: translate(35%, 155%);
+      top: 45%;
+      left: 30%;
       z-index: 6;
     }
 
     @media only screen and (max-width: 56.25em) {
       .background-2 {
-        transform: translate(10%, 155%);
+        left: 0;
       }
     }
 
     @media only screen and (max-width: 37.5em) {
       .background-2 {
-        transform: translate(-10%, 155%);
+        top: 50%;
+        left: -90%;
+      }
+    }
+
+    .background-2-dark-mode {
+      top: 30%;
+      left: 10%;
+      z-index: 6;
+    }
+
+    @media only screen and (max-width: 56.25em) {
+      .background-2-dark-mode {
+        left: 0;
+      }
+    }
+
+    @media only screen and (max-width: 37.5em) {
+      .background-2-dark-mode {
+        top: 45%;
+        left: -90%;
       }
     }
 
     // big hill
     .background-3 {
-      top: 0;
-      left: 0;
-      transform: translate(-10%, 90%);
+      top: 45%;
+      left: -5%;
       z-index: 5;
     }
 
     @media only screen and (max-width: 56.25em) {
       .background-3 {
-        transform: translate(-20%, 90%);
+        top: 50%;
+        left: -85%;
       }
     }
 
     @media only screen and (max-width: 37.5em) {
       .background-3 {
-        transform: translate(-40%, 90%);
+        top: 55%;
+        left: -300%;
       }
     }
 
     // tree
     .background-4 {
-      top: 0;
+      top: 10%;
       left: 0;
-      transform: translate(0, 15%);
       z-index: 4;
     }
 
@@ -241,41 +398,27 @@ const Wrapper = styled.section`
 
     // big cloud
     .background-5 {
-      top: 0;
-      left: 0;
-      transform: translate(20%, 100%);
+      top: 15%;
+      left: 5%;
       z-index: 3;
     }
 
-    @media only screen and (max-width: 37.5em) {
+    @media only screen and (max-width: 56.25em) {
       .background-5 {
-        transform: translate(-10%, 100%);
+        display: none;
       }
     }
 
     // sun/moon
     .background-6 {
-      top: 0;
-      left: 0;
-      transform: translate(50%, -70%);
+      top: -80%;
+      left: 60%;
       z-index: 2;
-    }
-
-    @media only screen and (max-width: 75em) {
-      .background-6 {
-        transform: translate(40%, -70%);
-      }
-    }
-
-    @media only screen and (max-width: 56.25em) {
-      .background-6 {
-        transform: translate(10%, -70%);
-      }
     }
 
     @media only screen and (max-width: 37.5em) {
       .background-6 {
-        transform: translate(-5%, -70%);
+        left: 0;
       }
     }
 
