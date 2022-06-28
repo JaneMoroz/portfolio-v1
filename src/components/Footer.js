@@ -16,7 +16,7 @@ import {
 
 const Footer = () => {
   return (
-    <Wrapper>
+    <Wrapper id="contact">
       <div className="footer container">
         <h2>jane.contact</h2>
         {/* form */}

@@ -5,6 +5,7 @@ import About from "../components/About"
 import Projects from "../components/Projects"
 import MoreProjects from "../components/MoreProjects"
 import Footer from "../components/Footer"
+import Menu from "../components/Menu"
 
 const getStorageTheme = () => {
   let theme = "light-theme"
@@ -16,6 +17,7 @@ const getStorageTheme = () => {
 
 export default function Home() {
   const [theme, setTheme] = useState(getStorageTheme)
+  const [menu, setMenu] = useState(false)
 
   const toggleTheme = () => {
     if (theme === "light-theme") {
@@ -25,6 +27,10 @@ export default function Home() {
     }
   }
 
+  const toggleMenu = () => {
+    setMenu(!menu)
+  }
+
   useEffect(() => {
     document.documentElement.className = theme
     localStorage.setItem("theme", theme)
@@ -32,7 +38,8 @@ export default function Home() {
 
   return (
     <Layout>
-      <Hero theme={theme} toggleTheme={toggleTheme} />
+      <Menu menu={menu} toggleMenu={toggleMenu} />
+      <Hero theme={theme} toggleTheme={toggleTheme} toggleMenu={toggleMenu} />
       <About />
       <Projects />
       <MoreProjects />

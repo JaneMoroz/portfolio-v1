@@ -6,7 +6,7 @@ import { FaGithub, FaExternalLinkAlt } from "react-icons/fa"
 
 const Projects = () => {
   return (
-    <Wrapper className="container">
+    <Wrapper id="projects" className="container">
       <h2>jane.projects</h2>
       {/* project 1 */}
       <div className="project project-right">

@@ -12,6 +12,7 @@ module.exports = {
     author: "@janemoroz",
   },
   plugins: [
+    `gatsby-plugin-smoothscroll`,
     { resolve: `gatsby-plugin-styled-components` },
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,

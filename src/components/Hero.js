@@ -1,14 +1,13 @@
-import React, { useState } from "react"
+import React from "react"
 import styled from "styled-components"
 import HeroImagesBackground from "./HeroImagesBackground"
 import { light, lightDarkMode } from "../assets/images/index"
 import { FaBars } from "react-icons/fa"
 import { motion } from "framer-motion"
 
-const Hero = ({ theme, toggleTheme }) => {
-  // const [darkMode, setDarkMode] = useState(false)
+const Hero = ({ theme, toggleTheme, toggleMenu }) => {
   return (
-    <Wrapper>
+    <Wrapper id="home">
       <div className="hero container">
         {/* dark/light mode button */}
         <button
@@ -38,10 +37,14 @@ const Hero = ({ theme, toggleTheme }) => {
         </button>
         {/* menu button */}
         <motion.button
+          initial={{ opacity: 0, rotate: "0deg" }}
+          animate={{ opacity: 1, rotate: "180deg" }}
+          transition={{ delay: 1 }}
           whileHover={{
             boxShadow: "0px 0px 8px rgb(245, 201, 194)",
           }}
           className="btn menu-btn"
+          onClick={() => toggleMenu()}
         >
           <span>
             <FaBars />
@@ -98,9 +101,8 @@ const Wrapper = styled.section`
 
     .menu-btn {
       position: absolute;
-      top: 0;
-      left: 95%;
-      transform: translate(-80%, 20%);
+      top: 2rem;
+      right: 2rem;
       background-color: var(--color-accent-pink);
       padding: 2.4rem;
       border-radius: 50%;
@@ -120,10 +122,6 @@ const Wrapper = styled.section`
     .hero {
       .dark-light-mode-btn {
         transform: translate(10%, -50%);
-      }
-
-      .menu-btn {
-        left: 95%;
       }
     }
   }

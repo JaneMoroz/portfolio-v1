@@ -23,7 +23,7 @@ const About = () => {
     ".net",
   ]
   return (
-    <Wrapper className="about container">
+    <Wrapper id="about" className="about container">
       {/* mouse */}
       <div className="background">
         <img src={mouse} alt="mouse" />
