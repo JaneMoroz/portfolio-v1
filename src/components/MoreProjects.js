@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import project3 from "../assets/images/project-3.jpeg"
-import disk from "../assets/images/floppy-disk.svg"
+import disk from "../assets/images/illustrations/floppy-disk.svg"
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa"
 
 const MoreProjects = () => {

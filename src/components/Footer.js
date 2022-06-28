@@ -1,10 +1,10 @@
 import React from "react"
 import styled from "styled-components"
-import background1 from "../assets/images/Background-1.svg"
-import background3 from "../assets/images/Background-3.svg"
-import girl from "../assets/images/girl.svg"
-import plant from "../assets/images/plant.svg"
-import tree from "../assets/images/tree.svg"
+import smallHill from "../assets/images/illustrations/small-hill.svg"
+import bigHill from "../assets/images/illustrations/big-hill.svg"
+import girl from "../assets/images/illustrations/girl.svg"
+import plant from "../assets/images/illustrations/plant.svg"
+import tree from "../assets/images/illustrations/tree.svg"
 // import trees from "../assets/images/trees.svg"
 import {
   FaEnvelope,
@@ -41,13 +41,13 @@ const Footer = () => {
         <div className="background background-2">
           <img src={girl} alt="girl" />
         </div>
-        {/* hill right */}
+        {/* small hill right */}
         <div className="background background-3">
-          <img src={background1} alt="hill right" />
+          <img src={smallHill} alt="small hill" />
         </div>
-        {/* hill left */}
+        {/* big hill left */}
         <div className="background background-4">
-          <img src={background3} alt="hill left" />
+          <img src={bigHill} alt="big hill" />
         </div>
         {/* tree */}
         <div className="background background-5">

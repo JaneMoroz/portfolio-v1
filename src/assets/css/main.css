@@ -23,8 +23,15 @@ html {
 }
 
 :root {
-  /* COLORS */
-  /* LIGHT MODE */
+  /*BOX SHADOWS */
+  --shadow: 2px 2px 6px rgba(0, 0, 0, 0.125);
+
+  /* TYPOGRAPHY */
+  --main-font: "Montserrat", sans-serif;
+  --accent-font: "Fascinate", cursive;
+}
+
+.light-theme {
   --color-dark-pink: #f59d9b;
   --color-light-pink: #f5cac3;
   --color-accent-pink: #f7ede2;
@@ -42,13 +49,26 @@ html {
   --color-text-secondary: #746c6c;
   --color-background-1: #ffffff;
   --color-background-2: #84a59d;
+}
 
-  /*BOX SHADOWS */
-  --shadow: 2px 2px 6px rgba(0, 0, 0, 0.125);
+.dark-theme {
+  --color-dark-pink: #f59d9b;
+  --color-light-pink: #f5cac3;
+  --color-accent-pink: #9a8c98;
+  --color-accent-pink-transparent: rgba(247, 237, 226, 0.8);
+  --color-yellow: #fbdc8e;
+  --color-blue: #32517a;
+  --color-green: #fbdc8e;
+  --color-clouds: #4a4e69;
+  --color-hill-big: #1b1b35;
+  --color-hill-small: #4a4e69;
+  --color-lamp-main: #f7ede2;
+  --color-program: #9a8c98;
 
-  /* TYPOGRAPHY */
-  --main-font: "Montserrat", sans-serif;
-  --accent-font: "Fascinate", cursive;
+  --color-text-main: #9a8c98;
+  --color-text-secondary: #746c6c;
+  --color-background-1: #1b1b35;
+  --color-background-2: #22223b;
 }
 
 body {

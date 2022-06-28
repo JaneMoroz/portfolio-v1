@@ -6,7 +6,7 @@ import {
   FaWindowMinimize,
   FaChevronRight,
 } from "react-icons/fa"
-import mouse from "../assets/images/mouse.svg"
+import mouse from "../assets/images/illustrations/mouse.svg"
 
 const About = () => {
   const techTags = [
