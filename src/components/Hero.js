@@ -1,11 +1,32 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import HeroImagesBackground from "./HeroImagesBackground"
 import { light, lightDarkMode } from "../assets/images/index"
 import { FaBars } from "react-icons/fa"
-import { motion } from "framer-motion"
+import { motion, useViewportScroll, useTransform } from "framer-motion"
+
+const lampVariant = {
+  animate: {
+    rotateZ: [5, -5],
+    transition: {
+      repeat: Infinity,
+      repeatType: "reverse",
+      duration: 2,
+    },
+  },
+}
 
 const Hero = ({ theme, toggleTheme, toggleMenu }) => {
+  const { scrollYProgress } = useViewportScroll()
+  const yText = useTransform(scrollYProgress, [0, 1], [0, 100 * 5])
+
+  // useEffect(() => {
+  //   scrollYProgress.onChange(latest => {
+  //     // console.log(latest)
+  //     console.log(latest)
+  //   })
+  // }, [])
+
   return (
     <Wrapper id="home">
       <div className="hero container">
@@ -18,18 +39,16 @@ const Hero = ({ theme, toggleTheme, toggleMenu }) => {
         >
           {theme === "light-theme" && (
             <motion.img
-              whileHover={{
-                rotateZ: 5,
-              }}
+              variants={lampVariant}
+              animate="animate"
               src={light}
               alt="dark/light mode button"
             />
           )}
           {theme === "dark-theme" && (
             <motion.img
-              whileHover={{
-                rotateZ: 5,
-              }}
+              variants={lampVariant}
+              animate="animate"
               src={lightDarkMode}
               alt="dark/light mode button"
             />
@@ -55,6 +74,7 @@ const Hero = ({ theme, toggleTheme, toggleMenu }) => {
           initial={{ x: "-100vw", opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           className="hero-text"
+          style={{ y: yText }}
         >
           <div className="text-box">
             <h1>
@@ -94,9 +114,8 @@ const Wrapper = styled.section`
 
     .dark-light-mode-btn {
       position: absolute;
-      top: 0;
-      left: 0;
-      transform: translate(0%, -50%);
+      top: 1rem;
+      left: 1rem;
     }
 
     .menu-btn {
