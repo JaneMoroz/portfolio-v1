@@ -18,6 +18,11 @@ import mouse from "../images/illustrations/mouse.svg"
 import mouseDarkMode from "../images/illustrations/mouse-dark-mode.svg"
 import floppyDisk from "../images/illustrations/floppy-disk.svg"
 import floppyDiskDarkMode from "../images/illustrations/floppy-disk-dark-mode.svg"
+import girlFooter from "../images/illustrations/girl-footer.svg"
+import girlFooterDarkMode from "../images/illustrations/girl-footer-dark-mode.svg"
+import plant from "../images/illustrations/plant.svg"
+import tree2 from "../images/illustrations/tree-2.svg"
+import tree2DarkMode from "../images/illustrations/tree-2-dark-mode.svg"
 
 export {
   smallHill,
@@ -40,4 +45,9 @@ export {
   mouseDarkMode,
   floppyDisk,
   floppyDiskDarkMode,
+  girlFooter,
+  girlFooterDarkMode,
+  plant,
+  tree2,
+  tree2DarkMode,
 }

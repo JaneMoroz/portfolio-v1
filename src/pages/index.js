@@ -57,7 +57,7 @@ export default function Home() {
         showMoreProjects={showMoreProjects}
         toggleMoreProjects={toggleMoreProjects}
       />
-      <Footer />
+      <Footer theme={theme} />
     </Layout>
   )
 }
