@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react"
+import React, { useEffect } from "react"
 import styled from "styled-components"
 import HeroImagesBackground from "./HeroImagesBackground"
 import { light, lightDarkMode } from "../assets/images/index"
 import { FaBars } from "react-icons/fa"
 import { motion, useViewportScroll, useTransform } from "framer-motion"
 
+// Lamp infinite animation
 const lampVariant = {
   animate: {
     rotateZ: [5, -5],
@@ -16,16 +17,28 @@ const lampVariant = {
   },
 }
 
+// Menu animation
+const menuButtonVariant = {
+  hidden: {
+    opacity: 0,
+    rotate: "0deg",
+  },
+  visible: {
+    opacity: 1,
+    rotate: "180deg",
+    transition: {
+      delay: 1,
+    },
+  },
+  hover: {
+    boxShadow: "0px 0px 8px rgb(245, 201, 194)",
+  },
+}
+
 const Hero = ({ theme, toggleTheme, toggleMenu }) => {
+  // Parallax
   const { scrollYProgress } = useViewportScroll()
   const yText = useTransform(scrollYProgress, [0, 1], [0, 100 * 5])
-
-  // useEffect(() => {
-  //   scrollYProgress.onChange(latest => {
-  //     // console.log(latest)
-  //     console.log(latest)
-  //   })
-  // }, [])
 
   return (
     <Wrapper id="home">
@@ -56,12 +69,10 @@ const Hero = ({ theme, toggleTheme, toggleMenu }) => {
         </button>
         {/* menu button */}
         <motion.button
-          initial={{ opacity: 0, rotate: "0deg" }}
-          animate={{ opacity: 1, rotate: "180deg" }}
-          transition={{ delay: 1 }}
-          whileHover={{
-            boxShadow: "0px 0px 8px rgb(245, 201, 194)",
-          }}
+          variants={menuButtonVariant}
+          initial="hidden"
+          animate="visible"
+          whileHover="hover"
           className="btn menu-btn"
           onClick={() => toggleMenu()}
         >
@@ -116,6 +127,7 @@ const Wrapper = styled.section`
       position: absolute;
       top: 1rem;
       left: 1rem;
+      transform: translate(10%, -50%);
     }
 
     .menu-btn {
@@ -133,14 +145,6 @@ const Wrapper = styled.section`
         justify-content: center;
         font-size: 3rem;
         color: var(--color-light-pink);
-      }
-    }
-  }
-
-  @media only screen and (max-width: 75em) {
-    .hero {
-      .dark-light-mode-btn {
-        transform: translate(10%, -50%);
       }
     }
   }

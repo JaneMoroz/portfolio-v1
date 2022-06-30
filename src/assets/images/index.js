@@ -14,6 +14,10 @@ import smallCloud from "../images/illustrations/small-cloud.svg"
 import smallCloudDarkMode from "../images/illustrations/small-cloud-dark-mode.svg"
 import light from "../images/illustrations/Light.svg"
 import lightDarkMode from "../images/illustrations/Light-dark-mode.svg"
+import mouse from "../images/illustrations/mouse.svg"
+import mouseDarkMode from "../images/illustrations/mouse-dark-mode.svg"
+import floppyDisk from "../images/illustrations/floppy-disk.svg"
+import floppyDiskDarkMode from "../images/illustrations/floppy-disk-dark-mode.svg"
 
 export {
   smallHill,
@@ -32,4 +36,8 @@ export {
   smallCloudDarkMode,
   light,
   lightDarkMode,
+  mouse,
+  mouseDarkMode,
+  floppyDisk,
+  floppyDiskDarkMode,
 }

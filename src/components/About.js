@@ -6,31 +6,101 @@ import {
   FaWindowMinimize,
   FaChevronRight,
 } from "react-icons/fa"
-import mouse from "../assets/images/illustrations/mouse.svg"
+import { mouse, mouseDarkMode } from "../assets/images/index"
+import { motion } from "framer-motion"
 
-const About = () => {
+// Mouse animation
+const mouseVariant = {
+  hidden: {
+    x: -50,
+    opacity: 0,
+  },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      delay: 1,
+      duration: 0.5,
+    },
+  },
+}
+
+// Program animation
+const programVariant = {
+  hidden: {
+    y: "200",
+    opacity: 0,
+  },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      delay: 0.5,
+      duration: 0.5,
+    },
+  },
+}
+
+// Console type thing animation (don't know to call it)
+const typeBlockVariant = {
+  animate: {
+    opacity: [0, 1],
+    transition: { repeat: Infinity, repeatType: "reverse", duration: 0.7 },
+  },
+}
+
+const About = ({ theme }) => {
   const techTags = [
-    "react",
-    "redux",
     "javascript",
     "typescript",
+    "c#",
+    "react",
+    "redux",
+    "gatsby",
     "node.js",
     "express.js",
     "bootstrap",
     "styled-components",
-    "gatsby",
     "sass",
     ".net",
+    "mongoDB",
+    "MySQL",
   ]
+
   return (
     <Wrapper id="about" className="about container">
       {/* mouse */}
-      <div className="background">
-        <img src={mouse} alt="mouse" />
-      </div>
+      {theme === "light-theme" && (
+        <motion.div
+          variants={mouseVariant}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="background"
+        >
+          <img src={mouse} alt="mouse" />
+        </motion.div>
+      )}
+      {theme === "dark-theme" && (
+        <motion.div
+          variants={mouseVariant}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="background"
+        >
+          <img src={mouseDarkMode} alt="mouse" />
+        </motion.div>
+      )}
       <h2>jane.about</h2>
       {/* program */}
-      <div className="program">
+      <motion.div
+        variants={programVariant}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="program"
+      >
         {/* program header */}
         <div className="program-header">
           <span>jane.exe</span>
@@ -91,11 +161,15 @@ const About = () => {
           <div className="program-el">
             <div className="question">
               <FaChevronRight className="icon" />
-              <span className="console"></span>
+              <motion.span
+                variants={typeBlockVariant}
+                animate="animate"
+                className="console"
+              ></motion.span>
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </Wrapper>
   )
 }
@@ -105,26 +179,12 @@ const Wrapper = styled.section`
 
   .background {
     position: absolute;
-    top: 0;
-    left: 100%;
-    transform: translate(-90%, 80%);
+    top: 30%;
+    left: 80%;
     z-index: -1;
   }
 
-  @media only screen and (max-width: 75em) {
-    .background {
-      transform: translate(-85%, 50%);
-    }
-  }
-
   @media only screen and (max-width: 56.25em) {
-    .background {
-      left: 0;
-      transform: translate(0%, 70%) rotate(45deg);
-    }
-  }
-
-  @media only screen and (max-width: 37.5em) {
     .background {
       display: none;
     }
@@ -187,7 +247,7 @@ const Wrapper = styled.section`
         border: 1px solid var(--color-text-secondary);
         border-radius: 10px;
         padding: 0.6rem 1.2rem;
-        margin: 0.3rem;
+        margin: 0.5rem 0.3rem;
       }
     }
   }

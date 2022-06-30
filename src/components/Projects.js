@@ -3,16 +3,74 @@ import styled from "styled-components"
 import project1 from "../assets/images/project-1.jpeg"
 import project2 from "../assets/images/project-2.jpeg"
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa"
+import { motion } from "framer-motion"
 
-const Projects = () => {
+// From left animation
+const fromLeftVariant = {
+  hidden: {
+    x: "-100",
+    opacity: 0,
+  },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      delay: 0.5,
+      duration: 0.5,
+    },
+  },
+}
+
+// From right animation
+const fromRightVariant = {
+  hidden: {
+    x: "100",
+    opacity: 0,
+  },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      delay: 0.5,
+      duration: 0.5,
+    },
+  },
+}
+
+// Overlay animation
+const overlayVariant = {
+  visible: {
+    opacity: 1,
+  },
+  hidden: {
+    opacity: 0.6,
+    transition: {
+      delay: 0.5,
+      duration: 0.5,
+    },
+  },
+}
+
+const Projects = ({ showMoreProjects, toggleMoreProjects }) => {
   return (
     <Wrapper id="projects" className="container">
       <h2>jane.projects</h2>
       {/* project 1 */}
-      <div className="project project-right">
+      <motion.div
+        variants={fromLeftVariant}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="project project-right"
+      >
         <div className="image-box">
           <img src={project1} alt="project 1" />
-          <div className="image-overlay"></div>
+          <motion.div
+            variants={overlayVariant}
+            initial="visible"
+            whileInView="hidden"
+            className="image-overlay"
+          ></motion.div>
         </div>
         <div className="text-box">
           <h5>
@@ -43,12 +101,23 @@ const Projects = () => {
             </button>
           </div>
         </div>
-      </div>
+      </motion.div>
       {/* project 2 */}
-      <div className="project project-left">
+      <motion.div
+        variants={fromRightVariant}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="project project-left"
+      >
         <div className="image-box">
           <img src={project2} alt="project 2" />
-          <div className="image-overlay"></div>
+          <motion.div
+            variants={overlayVariant}
+            initial="visible"
+            whileInView="hidden"
+            className="image-overlay"
+          ></motion.div>
         </div>
         <div className="text-box">
           <h5>
@@ -79,12 +148,25 @@ const Projects = () => {
             </button>
           </div>
         </div>
-      </div>
+      </motion.div>
+      {!showMoreProjects && (
+        <button
+          onClick={() => toggleMoreProjects()}
+          className="btn btn-outlined"
+        >
+          show more
+        </button>
+      )}
     </Wrapper>
   )
 }
 
 const Wrapper = styled.section`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 1.6rem;
   h2 {
     text-align: center;
     margin-top: 6.8rem;
@@ -95,6 +177,7 @@ const Wrapper = styled.section`
     position: relative;
     padding: 3.2rem 0;
     height: 50rem;
+    width: 100%;
 
     .image-box {
       position: relative;
@@ -173,9 +256,17 @@ const Wrapper = styled.section`
 
     @media only screen and (max-width: 37.5em) {
       .text-box {
+        top: 100%;
         padding: 1.8rem 2.4rem;
+        background: var(--color-background-2);
+        max-width: 100%;
+        width: 100%;
         .details {
           display: none;
+        }
+        h3,
+        .tech-tags {
+          color: var(--color-text-main);
         }
       }
     }
@@ -214,11 +305,25 @@ const Wrapper = styled.section`
       .text-box {
         transform: translate(-2.4rem, 50%);
       }
+
+      @media only screen and (max-width: 37.5em) {
+        padding: 2.4rem 0;
+        .text-box {
+          transform: translate(0, -100%);
+        }
+      }
     }
 
     .project-left {
       .text-box {
         transform: translate(2.4rem, 50%);
+      }
+
+      @media only screen and (max-width: 37.5em) {
+        padding: 2.4rem 0;
+        .text-box {
+          transform: translate(0, -100%);
+        }
       }
     }
   }

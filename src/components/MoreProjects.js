@@ -4,7 +4,7 @@ import project3 from "../assets/images/project-3.jpeg"
 import disk from "../assets/images/illustrations/floppy-disk.svg"
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa"
 
-const MoreProjects = () => {
+const MoreProjects = ({ showMoreProjects, toggleMoreProjects }) => {
   return (
     <Wrapper className="container">
       <div className="projects-nav">
@@ -46,7 +46,14 @@ const MoreProjects = () => {
           </div>
         </div>
       </div>
-      <button className="btn btn-outlined">show less</button>
+      {showMoreProjects && (
+        <button
+          onClick={() => toggleMoreProjects()}
+          className="btn btn-outlined"
+        >
+          show less
+        </button>
+      )}
       {/* background */}
       <div className="background">
         <img src={disk} alt="floppy disk" />
