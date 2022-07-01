@@ -81,6 +81,20 @@ body {
   overflow-x: hidden;
 }
 
+/* Scrollbar */
+
+body::-webkit-scrollbar {
+  width: 8px;
+}
+
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--color-light-pink);
+}
+
 /* TYPOGRAPHY */
 
 h1 {
@@ -175,7 +189,7 @@ button,
 }
 
 .btn-icon {
-  font-size: 2rem;
+  font-size: 2.6rem;
   color: var(--color-dark-pink);
 }
 

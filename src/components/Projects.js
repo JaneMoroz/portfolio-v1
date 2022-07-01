@@ -3,7 +3,7 @@ import styled from "styled-components"
 import project1 from "../assets/images/project-1.jpeg"
 import project2 from "../assets/images/project-2.jpeg"
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa"
-import { motion } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
 
 // From left animation
 const fromLeftVariant = {
@@ -43,9 +43,31 @@ const overlayVariant = {
     opacity: 1,
   },
   hidden: {
-    opacity: 0.6,
+    opacity: 0.7,
     transition: {
       delay: 0.5,
+      duration: 0.5,
+    },
+  },
+}
+
+// See more button animation
+const buttonVariant = {
+  hidden: {
+    opacity: 0,
+    x: "-100vw",
+  },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+    },
+  },
+  exit: {
+    x: "100vw",
+    opacity: 0,
+    transition: {
       duration: 0.5,
     },
   },
@@ -149,14 +171,20 @@ const Projects = ({ showMoreProjects, toggleMoreProjects }) => {
           </div>
         </div>
       </motion.div>
-      {!showMoreProjects && (
-        <button
-          onClick={() => toggleMoreProjects()}
-          className="btn btn-outlined"
-        >
-          show more
-        </button>
-      )}
+      <AnimatePresence>
+        {!showMoreProjects && (
+          <motion.button
+            variants={buttonVariant}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            onClick={() => toggleMoreProjects()}
+            className="btn btn-outlined"
+          >
+            show more
+          </motion.button>
+        )}
+      </AnimatePresence>
     </Wrapper>
   )
 }
@@ -169,14 +197,14 @@ const Wrapper = styled.section`
   row-gap: 1.6rem;
   h2 {
     text-align: center;
-    margin-top: 6.8rem;
+    margin-top: 5.6rem;
     margin-bottom: 1.6rem;
   }
 
   .project {
     position: relative;
     padding: 3.2rem 0;
-    height: 50rem;
+    height: 100%;
     width: 100%;
 
     .image-box {
@@ -198,18 +226,6 @@ const Wrapper = styled.section`
         height: 100%;
         width: 100%;
         background: var(--color-accent-pink-transparent);
-      }
-    }
-
-    @media only screen and (max-width: 56.25em) {
-      .image-box {
-        width: 60rem;
-      }
-    }
-
-    @media only screen and (max-width: 37.5em) {
-      .image-box {
-        width: 100%;
       }
     }
 
@@ -253,23 +269,6 @@ const Wrapper = styled.section`
         column-gap: 1.6rem;
       }
     }
-
-    @media only screen and (max-width: 37.5em) {
-      .text-box {
-        top: 100%;
-        padding: 1.8rem 2.4rem;
-        background: var(--color-background-2);
-        max-width: 100%;
-        width: 100%;
-        .details {
-          display: none;
-        }
-        h3,
-        .tech-tags {
-          color: var(--color-text-main);
-        }
-      }
-    }
   }
 
   .project-right {
@@ -305,24 +304,71 @@ const Wrapper = styled.section`
       .text-box {
         transform: translate(-2.4rem, 50%);
       }
-
-      @media only screen and (max-width: 37.5em) {
-        padding: 2.4rem 0;
-        .text-box {
-          transform: translate(0, -100%);
-        }
-      }
     }
 
     .project-left {
       .text-box {
         transform: translate(2.4rem, 50%);
       }
+    }
+  }
 
-      @media only screen and (max-width: 37.5em) {
-        padding: 2.4rem 0;
-        .text-box {
-          transform: translate(0, -100%);
+  @media only screen and (max-width: 56.25em) {
+    .project {
+      padding: 0;
+      .image-box {
+        width: 100%;
+        margin-bottom: 2.8rem;
+      }
+
+      .text-box {
+        position: relative;
+        max-width: 100%;
+      }
+    }
+
+    .project-right {
+      .text-box {
+        transform: translate(0, 0);
+
+        h3,
+        h5,
+        .tech-tags,
+        .buttons {
+          padding: 0 2.4rem;
+        }
+      }
+    }
+
+    .project-left {
+      .text-box {
+        transform: translate(0, 0);
+
+        h3,
+        h5,
+        .tech-tags,
+        .buttons {
+          padding: 0 2.4rem;
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 37.5em) {
+    .project {
+      .image-box {
+        margin-bottom: 0;
+      }
+
+      .text-box {
+        padding: 1.2rem 2.4rem;
+        background: var(--color-background-2);
+        .details {
+          display: none;
+        }
+        h3,
+        .tech-tags {
+          color: var(--color-text-main);
         }
       }
     }

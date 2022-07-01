@@ -11,58 +11,168 @@ import {
   bigHill,
   bigHillDarkMode,
 } from "../assets/images/index"
-// import { motion, useViewportScroll, useTransform } from "framer-motion"
+import { motion } from "framer-motion"
+
+const bigHillVariant = {
+  hidden: {
+    y: 200,
+    opacity: 0,
+  },
+  visible: {
+    y: 0,
+    opacity: 1,
+  },
+}
+
+const smallHillVariant = {
+  hidden: {
+    x: 200,
+    opacity: 0,
+  },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      delay: 1,
+      duration: 0.5,
+    },
+  },
+}
+
+const girlVariant = {
+  hidden: {
+    x: -200,
+    opacity: 0,
+  },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      delay: 1,
+      duration: 0.5,
+    },
+  },
+}
+
+const treeVariant = {
+  hidden: {
+    y: 200,
+    opacity: 0,
+  },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      delay: 1,
+      duration: 0.5,
+    },
+  },
+}
 
 const FooterImagesBackground = ({ theme }) => {
   return (
     <Wrapper>
       {/* plant */}
-      <div className="background background-1">
+      <motion.div
+        variants={bigHillVariant}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="background background-1"
+      >
         <img src={plant} alt="plant" />
-      </div>
+      </motion.div>
       {/* girl */}
       {theme === "light-theme" && (
-        <div className="background background-2">
+        <motion.div
+          variants={girlVariant}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="background background-2"
+        >
           <img src={girlFooter} alt="girl is waving her hand happily" />
-        </div>
+        </motion.div>
       )}
       {theme === "dark-theme" && (
-        <div className="background background-2">
+        <motion.div
+          variants={girlVariant}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="background background-2"
+        >
           <img src={girlFooterDarkMode} alt="girl is waving her hand happily" />
-        </div>
+        </motion.div>
       )}
       {/* small hill right */}
       {theme === "light-theme" && (
-        <div className="background background-3">
+        <motion.div
+          variants={smallHillVariant}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="background background-3"
+        >
           <img src={smallHill} alt="small hill" />
-        </div>
+        </motion.div>
       )}
       {theme === "dark-theme" && (
-        <div className="background background-3">
+        <motion.div
+          variants={smallHillVariant}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="background background-3"
+        >
           <img src={smallHillDarkMode} alt="small hill" />
-        </div>
+        </motion.div>
       )}
       {/* big hill left */}
       {theme === "light-theme" && (
-        <div className="background background-4">
+        <motion.div
+          variants={bigHillVariant}
+          initial="hidden"
+          whileInView="animate"
+          viewport={{ once: true }}
+          className="background background-4"
+        >
           <img src={bigHill} alt="big hill" />
-        </div>
+        </motion.div>
       )}
       {theme === "dark-theme" && (
-        <div className="background background-4">
+        <motion.div
+          variants={bigHillVariant}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="background background-4"
+        >
           <img src={bigHillDarkMode} alt="big hill" />
-        </div>
+        </motion.div>
       )}
       {/* tree */}
       {theme === "light-theme" && (
-        <div className="background background-5">
+        <motion.div
+          variants={treeVariant}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="background background-5"
+        >
           <img src={tree2} alt="tree" />
-        </div>
+        </motion.div>
       )}
       {theme === "dark-theme" && (
-        <div className="background background-5">
+        <motion.div
+          variants={treeVariant}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="background background-5"
+        >
           <img src={tree2DarkMode} alt="tree" />
-        </div>
+        </motion.div>
       )}
     </Wrapper>
   )
@@ -78,7 +188,7 @@ const Wrapper = styled.div`
   }
 
   .background-1 {
-    top: 80%;
+    top: 70%;
     left: 30%;
     z-index: 8;
   }
