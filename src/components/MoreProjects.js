@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import styled from "styled-components"
-import { graphql, useStaticQuery, Link } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import setupNames from "../utils/setupNames"
 import disk from "../assets/images/illustrations/floppy-disk.svg"
@@ -98,7 +98,6 @@ const query = graphql`
       sort: { fields: contentfulid, order: ASC }
     ) {
       nodes {
-        contentfulid
         image {
           gatsbyImageData(layout: CONSTRAINED, placeholder: TRACED_SVG)
         }
@@ -122,14 +121,13 @@ const MoreProjects = ({ showMoreProjects, toggleMoreProjects }) => {
   } = useStaticQuery(query)
   const names = setupNames(projects)
   const [value, setValue] = useState(0)
-  const {
-    contentfulid: id,
+  let {
     name,
     description: { description },
     additional: { techtags, git, link },
     image,
   } = projects[value]
-  const pathToImage = getImage(image)
+  let pathToImage = getImage(image)
 
   return (
     <Wrapper className="container">

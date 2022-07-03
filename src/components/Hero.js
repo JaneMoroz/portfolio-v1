@@ -93,8 +93,9 @@ const Hero = ({ theme, toggleTheme, toggleMenu }) => {
             </h1>
             <h1>I build things for the web.</h1>
             <h4>
-              I’m a software engineer specializing in building (and occasionally
-              designing) exceptional digital experiences.{" "}
+              I’m a software engineer who is passionate about technology,
+              learning new things and creating truly beautiful and efficient
+              digital products
             </h4>
             <button className="btn btn-outlined">resume</button>
           </div>

@@ -6,6 +6,7 @@ import Projects from "../components/Projects"
 import MoreProjects from "../components/MoreProjects"
 import Footer from "../components/Footer"
 import Menu from "../components/Menu"
+import SEO from "../components/SEO"
 
 // Get theme from the local storage
 const getStorageTheme = () => {
@@ -16,7 +17,7 @@ const getStorageTheme = () => {
   return theme
 }
 
-export default function Home() {
+export default function Home({ data }) {
   const [theme, setTheme] = useState(getStorageTheme)
   const [menu, setMenu] = useState(false)
   const [showMoreProjects, setShowMoreProjects] = useState(false)
@@ -46,6 +47,7 @@ export default function Home() {
 
   return (
     <Layout>
+      <SEO title={"Home"} />
       <Menu menu={menu} toggleMenu={toggleMenu} />
       <Hero theme={theme} toggleTheme={toggleTheme} toggleMenu={toggleMenu} />
       <About theme={theme} />

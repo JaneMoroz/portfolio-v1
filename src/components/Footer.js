@@ -15,37 +15,68 @@ const Footer = ({ theme }) => {
       <div className="footer container">
         <h2>jane.contact</h2>
         {/* form */}
-        <form className="form">
+        <form
+          action="https://formspree.io/f/xrgjvbkn"
+          method="POST"
+          className="form"
+        >
           <div className="form-row">
-            <input type="text" placeholder="name" />
+            <input name="name" type="text" placeholder="name" />
           </div>
           <div className="form-row">
-            <input type="email" placeholder="email" />
+            <input name="email" type="email" placeholder="email" />
           </div>
           <div className="form-row">
-            <textarea placeholder="message" />
+            <textarea name="message" placeholder="message" />
           </div>
-          <button className="btn btn-outlined">submit</button>
+          <button type="submit" className="btn btn-outlined">
+            submit
+          </button>
         </form>
         {/* background images */}
         <FooterImagesBackground theme={theme} />
         {/* social buttons */}
         <div className="social">
-          <button className="btn btn-icon">
+          <a
+            href="https://twitter.com"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="btn btn-icon"
+          >
             <FaEnvelope />
-          </button>
-          <button className="btn btn-icon">
+          </a>
+          <a
+            href="https://twitter.com"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="btn btn-icon"
+          >
             <FaGithub />
-          </button>
-          <button className="btn btn-icon">
+          </a>
+          <a
+            href="https://twitter.com"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="btn btn-icon"
+          >
             <FaLinkedinIn />
-          </button>
-          <button className="btn btn-icon">
+          </a>
+          <a
+            href="https://twitter.com"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="btn btn-icon"
+          >
             <FaTwitter />
-          </button>
-          <button className="btn btn-icon">
+          </a>
+          <a
+            href="https://twitter.com"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="btn btn-icon"
+          >
             <FaDiscord />
-          </button>
+          </a>
         </div>
       </div>
     </Wrapper>
@@ -97,6 +128,17 @@ const Wrapper = styled.section`
 
     .btn-icon {
       color: var(--color-text-main);
+    }
+  }
+
+  @media only screen and (max-width: 37.5em) {
+    .social {
+      position: relative;
+      top: 0;
+      left: 0;
+      flex-direction: row;
+      column-gap: 2.4rem;
+      margin-top: 1.8rem;
     }
   }
 `

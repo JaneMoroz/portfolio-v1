@@ -228,7 +228,8 @@ const Wrapper = styled.div`
   }
 
   @media only screen and (max-width: 37.5em) {
-    .background-2 {
+    .background-2,
+    .background-1 {
       display: none;
     }
   }

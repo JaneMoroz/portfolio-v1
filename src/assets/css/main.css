@@ -203,6 +203,12 @@ button,
   row-gap: 1rem;
 }
 
+@media only screen and (max-width: 37.5em) {
+  .form {
+    width: 40rem;
+  }
+}
+
 input,
 textarea {
   width: 100%;

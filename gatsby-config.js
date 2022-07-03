@@ -11,9 +11,17 @@ require("dotenv").config({
 module.exports = {
   /* Your site config here */
   siteMetadata: {
-    title: "My Portfolio",
-    description: "Jane Moroz's Portfolio",
-    author: "@janemoroz",
+    title: "Jane Moroz's Portfolio",
+    description:
+      "Jane Moroz is a software engineer, who is passionate about technology, learning new things and creating truly beautiful and efficient digital products.",
+    author: {
+      name: "Jane Moroz",
+      minibio:
+        "<strong>Jane Moroz</strong> is a software engineer, who is passionate about technology, learning new things and creating truly beautiful and efficient digital products. She's also interested in web design , and an advocate of building not only efficient but user-friendly and appealing websites and mobile apps.",
+    },
+    social: {
+      twitter: "@jane_moroz",
+    },
   },
   plugins: [
     `gatsby-plugin-smoothscroll`,
@@ -52,5 +60,6 @@ module.exports = {
         accessToken: process.env.CONTENTFUL_API_KEY,
       },
     },
+    `gatsby-plugin-react-helmet`,
   ],
 }
