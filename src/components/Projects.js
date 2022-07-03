@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
-import project1 from "../assets/images/project-1.jpeg"
-import project2 from "../assets/images/project-2.jpeg"
+import { graphql, useStaticQuery } from "gatsby"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa"
 import { AnimatePresence, motion } from "framer-motion"
 
@@ -43,7 +43,7 @@ const overlayVariant = {
     opacity: 1,
   },
   hidden: {
-    opacity: 0.7,
+    opacity: 0.5,
     transition: {
       delay: 0.5,
       duration: 0.5,
@@ -73,104 +73,106 @@ const buttonVariant = {
   },
 }
 
+// Graphql query
+const query = graphql`
+  {
+    allContentfulProject(
+      filter: { isFeatured: { eq: true } }
+      sort: { fields: contentfulid, order: ASC }
+    ) {
+      nodes {
+        contentfulid
+        image {
+          gatsbyImageData(layout: CONSTRAINED, placeholder: TRACED_SVG)
+        }
+        name
+        additional {
+          git
+          link
+          techtags
+        }
+        description {
+          description
+        }
+      }
+    }
+  }
+`
+
 const Projects = ({ showMoreProjects, toggleMoreProjects }) => {
+  const {
+    allContentfulProject: { nodes: projects },
+  } = useStaticQuery(query)
+
   return (
     <Wrapper id="projects" className="container">
       <h2>jane.projects</h2>
-      {/* project 1 */}
-      <motion.div
-        variants={fromLeftVariant}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        className="project project-right"
-      >
-        <div className="image-box">
-          <img src={project1} alt="project 1" />
+      {/* projects */}
+      {projects.map(project => {
+        const {
+          contentfulid: id,
+          name,
+          description: { description },
+          additional: { techtags, git, link },
+          image,
+        } = project
+        const pathToImage = getImage(image)
+        return (
           <motion.div
-            variants={overlayVariant}
-            initial="visible"
-            whileInView="hidden"
-            className="image-overlay"
-          ></motion.div>
-        </div>
-        <div className="text-box">
-          <h5>
-            <span>featured project</span>
-          </h5>
-          <h3>lucky paws store</h3>
-          <div className="details">
-            <p>
-              An online store. The project is built with React and it consumes
-              <span> Lucky-Paws-Store-REST-API</span>. It’s purpose is not only
-              to provide great customer experience but also to allow the store
-              owner to manage products, orders, users and reviews.
-            </p>
-          </div>
-          <div className="tech-tags">
-            <span>react</span>
-            <span>redux</span>
-            <span>react router</span>
-            <span>styled components</span>
-            <span>stripe</span>
-          </div>
-          <div className="buttons">
-            <button className="btn btn-icon">
-              <FaGithub />
-            </button>
-            <button className="btn btn-icon">
-              <FaExternalLinkAlt />
-            </button>
-          </div>
-        </div>
-      </motion.div>
-      {/* project 2 */}
-      <motion.div
-        variants={fromRightVariant}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        className="project project-left"
-      >
-        <div className="image-box">
-          <img src={project2} alt="project 2" />
-          <motion.div
-            variants={overlayVariant}
-            initial="visible"
-            whileInView="hidden"
-            className="image-overlay"
-          ></motion.div>
-        </div>
-        <div className="text-box">
-          <h5>
-            <span>featured project</span>
-          </h5>
-          <h3>Best Pizza Order App</h3>
-          <div className="details">
-            <p>
-              A pizza order app. The project is built with React and it’s main
-              features are the ability to sort and filter menu items,
-              pagination, “stripe” menu, the ability to processes payments with
-              Stripe using Netlify's Lambda function service.
-            </p>
-          </div>
-          <div className="tech-tags">
-            <span>react</span>
-            <span>react router</span>
-            <span>context api</span>
-            <span>netlify</span>
-            <span>stripe</span>
-          </div>
-          <div className="buttons">
-            <button className="btn btn-icon">
-              <FaGithub />
-            </button>
-            <button className="btn btn-icon">
-              <FaExternalLinkAlt />
-            </button>
-          </div>
-        </div>
-      </motion.div>
+            key={id}
+            variants={id % 2 !== 0 ? fromRightVariant : fromLeftVariant}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className={`project ${
+              id % 2 !== 0 ? "project-right" : "project-left"
+            }`}
+          >
+            <div className="image-box">
+              <GatsbyImage image={pathToImage} alt={name} />
+              <motion.div
+                variants={overlayVariant}
+                initial="visible"
+                whileInView="hidden"
+                className="image-overlay"
+              ></motion.div>
+            </div>
+            <div className="text-box">
+              <h5>
+                <span>featured project</span>
+              </h5>
+              <h3>{name}</h3>
+              <div className="details">
+                <p>{description}</p>
+              </div>
+              <div className="tech-tags">
+                {techtags.map((techtag, index) => {
+                  return <span key={index}>{techtag}</span>
+                })}
+              </div>
+              <div className="buttons">
+                <a
+                  href={git}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="btn btn-icon"
+                >
+                  <FaGithub />
+                </a>
+                <a
+                  href={link}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="btn btn-icon"
+                >
+                  <FaExternalLinkAlt />
+                </a>
+              </div>
+            </div>
+          </motion.div>
+        )
+      })}
+      {/* more projects button */}
       <AnimatePresence>
         {!showMoreProjects && (
           <motion.button
@@ -209,8 +211,10 @@ const Wrapper = styled.section`
 
     .image-box {
       position: relative;
-      width: 80rem;
+      width: 85rem;
       height: 100%;
+      max-height: 60rem;
+      overflow: hidden;
       box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
 
       img {
@@ -234,7 +238,7 @@ const Wrapper = styled.section`
       top: 0;
       right: 0;
       transform: translate(0, 50%);
-      max-width: 50rem;
+      max-width: 55rem;
 
       h5 {
         margin-bottom: 0.3rem;
@@ -256,7 +260,7 @@ const Wrapper = styled.section`
       }
 
       .details {
-        padding: 1.6rem 3.2rem;
+        padding: 1.8rem 3.6rem;
         margin-bottom: 1rem;
         background: var(--color-background-2);
         color: var(--color-text-main);
@@ -298,6 +302,10 @@ const Wrapper = styled.section`
   @media only screen and (max-width: 75em) {
     .project {
       padding: 3.2rem 2.4rem;
+      .image-box {
+        width: 65rem;
+        max-height: 45rem;
+      }
     }
 
     .project-right {
@@ -318,12 +326,14 @@ const Wrapper = styled.section`
       padding: 0;
       .image-box {
         width: 100%;
+        max-height: 90%;
         margin-bottom: 2.8rem;
       }
 
       .text-box {
         position: relative;
         max-width: 100%;
+        margin-bottom: 3.6rem;
       }
     }
 

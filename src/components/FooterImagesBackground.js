@@ -133,7 +133,7 @@ const FooterImagesBackground = ({ theme }) => {
         <motion.div
           variants={bigHillVariant}
           initial="hidden"
-          whileInView="animate"
+          whileInView="visible"
           viewport={{ once: true }}
           className="background background-4"
         >

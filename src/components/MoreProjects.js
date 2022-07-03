@@ -1,6 +1,8 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
-import project3 from "../assets/images/project-3.jpeg"
+import { graphql, useStaticQuery, Link } from "gatsby"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import setupNames from "../utils/setupNames"
 import disk from "../assets/images/illustrations/floppy-disk.svg"
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa"
 import { AnimatePresence, motion } from "framer-motion"
@@ -74,9 +76,64 @@ const buttonVariant = {
   },
 }
 
+// Overlay animation
+const overlayVariant = {
+  visible: {
+    opacity: 1,
+  },
+  hidden: {
+    opacity: 0.5,
+    transition: {
+      delay: 0.5,
+      duration: 0.5,
+    },
+  },
+}
+
+// Graphql query
+const query = graphql`
+  {
+    allContentfulProject(
+      filter: { isFeatured: { eq: false } }
+      sort: { fields: contentfulid, order: ASC }
+    ) {
+      nodes {
+        contentfulid
+        image {
+          gatsbyImageData(layout: CONSTRAINED, placeholder: TRACED_SVG)
+        }
+        name
+        additional {
+          git
+          link
+          techtags
+        }
+        description {
+          description
+        }
+      }
+    }
+  }
+`
+
 const MoreProjects = ({ showMoreProjects, toggleMoreProjects }) => {
+  const {
+    allContentfulProject: { nodes: projects },
+  } = useStaticQuery(query)
+  const names = setupNames(projects)
+  const [value, setValue] = useState(0)
+  const {
+    contentfulid: id,
+    name,
+    description: { description },
+    additional: { techtags, git, link },
+    image,
+  } = projects[value]
+  const pathToImage = getImage(image)
+
   return (
     <Wrapper className="container">
+      {/* projects navigation */}
       <AnimatePresence>
         {showMoreProjects && (
           <motion.div
@@ -86,27 +143,21 @@ const MoreProjects = ({ showMoreProjects, toggleMoreProjects }) => {
             exit="exit"
             className="projects-nav"
           >
-            <button className="btn">eTickets App</button>
-            <button className="btn">Skazka</button>
-            <button className="btn">Sealife</button>
-            <button className="btn">SanaFood</button>
-            <button className="btn">Dog's Power App</button>
-            <button className="btn">Portfolio v1</button>
-            <button className="btn">eTickets App</button>
-            <button className="btn">Skazka</button>
-            <button className="btn">Sealife</button>
-            <button className="btn">SanaFood</button>
-            <button className="btn">Dog's Power App</button>
-            <button className="btn">Portfolio v1</button>
-            <button className="btn">eTickets App</button>
-            <button className="btn">Skazka</button>
-            <button className="btn">Sealife</button>
-            <button className="btn">SanaFood</button>
-            <button className="btn">Dog's Power App</button>
-            <button className="btn">Portfolio v1</button>
+            {names.map((name, index) => {
+              return (
+                <button
+                  key={index}
+                  className={index === value ? "btn active-btn" : "btn"}
+                  onClick={() => setValue(index)}
+                >
+                  {name}
+                </button>
+              )
+            })}
           </motion.div>
         )}
       </AnimatePresence>
+      {/* project */}
       <AnimatePresence>
         {showMoreProjects && (
           <motion.div
@@ -117,31 +168,41 @@ const MoreProjects = ({ showMoreProjects, toggleMoreProjects }) => {
             className="project"
           >
             <div className="image-box">
-              <img src={project3} alt="project 3" />
-              <div className="image-overlay"></div>
+              <GatsbyImage image={pathToImage} alt={name} />
+              <motion.div
+                variants={overlayVariant}
+                initial="visible"
+                whileInView="hidden"
+                className="image-overlay"
+              ></motion.div>
             </div>
             <div className="text-box">
               <div className="header">
-                <h3>eTickets App</h3>
+                <h3>{name}</h3>
                 <div className="buttons">
-                  <button className="btn btn-icon">
+                  <a
+                    href={git}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="btn btn-icon"
+                  >
                     <FaGithub />
-                  </button>
-                  <button className="btn btn-icon">
+                  </a>
+                  <a
+                    href={link}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="btn btn-icon"
+                  >
                     <FaExternalLinkAlt />
-                  </button>
+                  </a>
                 </div>
               </div>
-              <p>
-                An app for buying movie tickets with authentication and admin
-                functionalities.
-              </p>
+              <p>{description}</p>
               <div className="tech-tags">
-                <span>react</span>
-                <span>redux</span>
-                <span>react router</span>
-                <span>styled components</span>
-                <span>stripe</span>
+                {techtags.map((techtag, index) => {
+                  return <span key={index}>{techtag}</span>
+                })}
               </div>
             </div>
           </motion.div>
@@ -181,7 +242,7 @@ const MoreProjects = ({ showMoreProjects, toggleMoreProjects }) => {
 const Wrapper = styled.section`
   position: relative;
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: max-content 3fr;
   align-items: center;
   column-gap: 3.2rem;
   margin-top: 2.4rem !important;
@@ -225,6 +286,7 @@ const Wrapper = styled.section`
     }
 
     .btn {
+      text-transform: capitalize;
       font-size: 2rem;
       font-weight: 300;
       line-height: 1.5;
@@ -254,11 +316,14 @@ const Wrapper = styled.section`
   .project {
     position: relative;
     padding: 3.2rem 0;
+    height: 75rem;
 
     .image-box {
       position: relative;
       width: 100%;
       height: 100%;
+      max-height: 50rem;
+      overflow: hidden;
       box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
 
       img {
