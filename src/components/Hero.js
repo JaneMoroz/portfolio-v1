@@ -1,9 +1,9 @@
 import React from "react"
-import styled from "styled-components"
-import HeroImagesBackground from "./HeroImagesBackground"
-import { light, lightDarkMode } from "../assets/images/index"
-import { FaBars } from "react-icons/fa"
+import Wrapper from "../assets/wrappers/Hero"
+import { HeroImagesBackground } from "./"
+import { light, lightDarkMode } from "../assets/images"
 import { motion, useViewportScroll, useTransform } from "framer-motion"
+import { useGlobalContext } from "../context/context"
 
 // Lamp infinite animation
 const lampVariant = {
@@ -17,25 +17,8 @@ const lampVariant = {
   },
 }
 
-// Menu animation
-const menuButtonVariant = {
-  hidden: {
-    opacity: 0,
-    rotate: "0deg",
-  },
-  visible: {
-    opacity: 1,
-    rotate: "180deg",
-    transition: {
-      delay: 1,
-    },
-  },
-  hover: {
-    boxShadow: "0px 0px 8px rgb(245, 201, 194)",
-  },
-}
-
-const Hero = ({ theme, toggleTheme, toggleMenu }) => {
+const Hero = () => {
+  const { theme, toggleTheme } = useGlobalContext()
   // Parallax
   const { scrollYProgress } = useViewportScroll()
   const yText = useTransform(scrollYProgress, [0, 1], [0, 100 * 5])
@@ -67,20 +50,6 @@ const Hero = ({ theme, toggleTheme, toggleMenu }) => {
             />
           )}
         </button>
-        {/* menu button */}
-        <motion.button
-          variants={menuButtonVariant}
-          initial="hidden"
-          animate="visible"
-          whileHover="hover"
-          className="btn menu-btn"
-          onClick={() => toggleMenu()}
-        >
-          <span>
-            <FaBars />
-          </span>
-        </motion.button>
-        {/* text */}
         <motion.div
           initial={{ x: "-100vw", opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
@@ -95,86 +64,16 @@ const Hero = ({ theme, toggleTheme, toggleMenu }) => {
             <h4>
               I’m a software engineer who is passionate about technology,
               learning new things and creating truly beautiful and efficient
-              digital products
+              digital products.
             </h4>
             <button className="btn btn-outlined">resume</button>
           </div>
         </motion.div>
         {/* images */}
-        <HeroImagesBackground theme={theme} />
+        <HeroImagesBackground />
       </div>
     </Wrapper>
   )
 }
-
-const Wrapper = styled.section`
-  height: 75rem;
-  width: 100%;
-  background-color: var(--color-background-2);
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
-  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
-  overflow: hidden;
-
-  .hero {
-    position: relative;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-items: center;
-    align-items: center;
-    height: 100%;
-    padding: 0 3.2rem;
-
-    .dark-light-mode-btn {
-      position: absolute;
-      top: 1rem;
-      left: 1rem;
-      transform: translate(10%, -50%);
-    }
-
-    .menu-btn {
-      position: absolute;
-      top: 2rem;
-      right: 2rem;
-      background-color: var(--color-accent-pink);
-      padding: 2.4rem;
-      border-radius: 50%;
-      z-index: 8;
-
-      span {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 3rem;
-        color: var(--color-light-pink);
-      }
-    }
-  }
-
-  @media only screen and (max-width: 56.25em) {
-    h1 {
-      font-size: 2.4rem;
-
-      span {
-        font-size: 2.8rem;
-      }
-    }
-
-    h4 {
-      font-size: 1.6rem;
-    }
-  }
-
-  @media only screen and (max-width: 37.5em) {
-    .btn-outlined {
-      margin-top: 2rem;
-    }
-    .hero {
-      grid-template-columns: 3fr 1fr;
-    }
-    h4 {
-      display: none;
-    }
-  }
-`
 
 export default Hero

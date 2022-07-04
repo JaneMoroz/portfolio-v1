@@ -13,7 +13,7 @@ const query = graphql`
   }
 `
 
-const SEO = ({ title }) => {
+const Seo = ({ title }) => {
   const { site } = useStaticQuery(query)
   return (
     <Helmet
@@ -24,4 +24,4 @@ const SEO = ({ title }) => {
   )
 }
 
-export default SEO
+export default Seo
