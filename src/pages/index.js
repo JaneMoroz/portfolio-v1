@@ -1,5 +1,6 @@
 import React from "react"
 import Layout from "../components/Layout"
+import { NavigationButton } from "../components"
 import {
   Seo,
   Menu,
@@ -13,6 +14,7 @@ import {
 export default function Home() {
   return (
     <Layout>
+      <NavigationButton />
       <Seo title={"Home"} />
       <Menu />
       <Hero />

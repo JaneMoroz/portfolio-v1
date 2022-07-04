@@ -1,17 +1,26 @@
 import React from "react"
 import Layout from "../components/Layout"
+import Wrapper from "../assets/wrappers/404"
 import { Seo } from "../components"
+import { cat } from "../assets/images"
+import { Link } from "gatsby"
 
 const Error = () => {
   return (
     <Layout>
       <Seo title={"Error Page"} />
-      <main className="error-page">
+      <Wrapper>
         <section>
-          <h1>404</h1>
-          <h3>page not found</h3>
+          <span>404</span>
+          <h1>Page not found!</h1>
+          <Link to="/" className="btn btn-outlined">
+            back to home page
+          </Link>
         </section>
-      </main>
+        <div className="background">
+          <img src={cat} alt="cat" />
+        </div>
+      </Wrapper>
     </Layout>
   )
 }
