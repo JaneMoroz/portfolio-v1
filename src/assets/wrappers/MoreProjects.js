@@ -5,13 +5,14 @@ const Wrapper = styled.section`
   display: grid;
   grid-template-columns: max-content 3fr;
   align-items: center;
+  justify-items: center;
   column-gap: 3.2rem;
   margin-top: 2.4rem !important;
   margin-bottom: 5.6rem;
 
   .background {
     position: absolute;
-    top: 100%;
+    top: 90%;
     left: 0;
     transform: translate(0, -50%);
     z-index: -1;
@@ -77,13 +78,12 @@ const Wrapper = styled.section`
   .project {
     position: relative;
     padding: 3.2rem 0;
-    height: 75rem;
+    height: 70rem;
 
     .image-box {
       position: relative;
       width: 100%;
-      height: 100%;
-      max-height: 50rem;
+      height: 45rem;
       overflow: hidden;
       box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
 
@@ -106,8 +106,8 @@ const Wrapper = styled.section`
     .text-box {
       width: 100%;
       padding: 1.6rem 3.2rem;
-      background: var(--color-background-2);
-      color: var(--color-text-main);
+      /* background: var(--color-background-2); */
+      color: var(--color-text-secondary);
       line-height: 1.5;
 
       .header {
@@ -149,7 +149,12 @@ const Wrapper = styled.section`
   @media only screen and (max-width: 56.25em) {
     display: flex;
     flex-direction: column;
-    max-height: 100%;
+
+    .project {
+      .image-box {
+        height: 60rem;
+      }
+    }
 
     .projects-nav {
       flex-direction: row;
@@ -164,7 +169,24 @@ const Wrapper = styled.section`
     }
 
     .project {
+      height: 85rem;
       margin: 0;
+    }
+  }
+
+  @media only screen and (max-width: 37.5em) {
+    .project {
+      height: 77rem;
+      .image-box {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 28em) {
+    .project {
+      height: 60rem;
     }
   }
 `

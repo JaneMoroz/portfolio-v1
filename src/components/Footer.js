@@ -1,13 +1,7 @@
 import React from "react"
 import Wrapper from "../assets/wrappers/Footer"
 import { FooterImagesBackground } from "./"
-import {
-  FaEnvelope,
-  FaGithub,
-  FaTwitter,
-  FaDiscord,
-  FaLinkedinIn,
-} from "react-icons/fa"
+import { socialLinks } from "../assets/data/links"
 
 const Footer = () => {
   return (
@@ -37,46 +31,33 @@ const Footer = () => {
         <FooterImagesBackground />
         {/* social buttons */}
         <div className="social">
-          <a
-            href="https://twitter.com"
-            target="_blank"
-            rel="noreferrer noopener"
-            className="btn btn-icon"
-          >
-            <FaEnvelope />
-          </a>
-          <a
-            href="https://twitter.com"
-            target="_blank"
-            rel="noreferrer noopener"
-            className="btn btn-icon"
-          >
-            <FaGithub />
-          </a>
-          <a
-            href="https://twitter.com"
-            target="_blank"
-            rel="noreferrer noopener"
-            className="btn btn-icon"
-          >
-            <FaLinkedinIn />
-          </a>
-          <a
-            href="https://twitter.com"
-            target="_blank"
-            rel="noreferrer noopener"
-            className="btn btn-icon"
-          >
-            <FaTwitter />
-          </a>
-          <a
-            href="https://twitter.com"
-            target="_blank"
-            rel="noreferrer noopener"
-            className="btn btn-icon"
-          >
-            <FaDiscord />
-          </a>
+          {socialLinks.map((socialLink, index) => {
+            const { icon, link, label, newTab } = socialLink
+            if (newTab) {
+              return (
+                <a
+                  key={index}
+                  href={link}
+                  aria-label={label}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="btn btn-icon"
+                >
+                  {icon}
+                </a>
+              )
+            }
+            return (
+              <a
+                key={index}
+                href={link}
+                aria-label={label}
+                className="btn btn-icon"
+              >
+                {icon}
+              </a>
+            )
+          })}
         </div>
       </div>
     </Wrapper>

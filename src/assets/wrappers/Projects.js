@@ -20,9 +20,9 @@ const Wrapper = styled.section`
 
     .image-box {
       position: relative;
-      width: 85rem;
+      width: 75rem;
       height: 100%;
-      max-height: 60rem;
+      max-height: 50rem;
       overflow: hidden;
       box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
 
@@ -135,7 +135,7 @@ const Wrapper = styled.section`
       padding: 0;
       .image-box {
         width: 100%;
-        max-height: 90%;
+        max-height: 60rem;
         margin-bottom: 2.8rem;
       }
 
@@ -177,6 +177,7 @@ const Wrapper = styled.section`
     .project {
       .image-box {
         margin-bottom: 0;
+        max-height: 40rem;
       }
 
       .text-box {

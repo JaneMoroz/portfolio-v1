@@ -77,6 +77,42 @@ const buttonVariant = {
   },
 }
 
+// Image animation
+const imageVariant = {
+  hidden: {
+    x: "100vh",
+  },
+  visible: {
+    x: 0,
+    transition: {
+      delay: 0.5,
+      duration: 0.5,
+    },
+  },
+  exit: {
+    x: "100vh",
+    transition: {
+      duration: 0.5,
+    },
+  },
+}
+
+// Text animation
+const textVariant = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      delay: 1,
+    },
+  },
+  exit: {
+    opacity: 0,
+  },
+}
+
 // Overlay animation
 const overlayVariant = {
   visible: {
@@ -85,7 +121,6 @@ const overlayVariant = {
   hidden: {
     opacity: 0.5,
     transition: {
-      delay: 0.5,
       duration: 0.5,
     },
   },
@@ -167,16 +202,33 @@ const MoreProjects = () => {
             exit="exit"
             className="project"
           >
-            <div className="image-box">
-              <GatsbyImage image={pathToImage} alt={name} />
+            <AnimatePresence>
               <motion.div
-                variants={overlayVariant}
-                initial="visible"
-                whileInView="hidden"
-                className="image-overlay"
-              ></motion.div>
-            </div>
-            <div className="text-box">
+                key={value}
+                variants={imageVariant}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                className="image-box"
+              >
+                <GatsbyImage image={pathToImage} alt={name} />
+
+                <motion.div
+                  variants={overlayVariant}
+                  initial="visible"
+                  whileInView="hidden"
+                  className="image-overlay"
+                ></motion.div>
+              </motion.div>
+            </AnimatePresence>
+            <motion.div
+              key={value}
+              variants={textVariant}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              className="text-box"
+            >
               <div className="header">
                 <h3>{name}</h3>
                 <div className="buttons">
@@ -204,7 +256,7 @@ const MoreProjects = () => {
                   return <span key={index}>{techtag}</span>
                 })}
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

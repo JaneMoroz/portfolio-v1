@@ -3,14 +3,8 @@ import Wrapper from "../assets/wrappers/Menu"
 import { useGlobalContext } from "../context/context"
 import { AnimatePresence, motion } from "framer-motion"
 import scrollTo from "gatsby-plugin-smoothscroll"
-import {
-  FaBars,
-  FaEnvelope,
-  FaGithub,
-  FaTwitter,
-  FaDiscord,
-  FaLinkedinIn,
-} from "react-icons/fa"
+import { FaBars } from "react-icons/fa"
+import { socialLinks } from "../assets/data/links"
 
 // Expanding background animation
 const containerVariant = {
@@ -119,21 +113,33 @@ const Menu = () => {
               resume
             </motion.button>
             <motion.div variants={menuVariant} className="social">
-              <button className="btn btn-icon">
-                <FaEnvelope />
-              </button>
-              <button className="btn btn-icon">
-                <FaGithub />
-              </button>
-              <button className="btn btn-icon">
-                <FaLinkedinIn />
-              </button>
-              <button className="btn btn-icon">
-                <FaTwitter />
-              </button>
-              <button className="btn btn-icon">
-                <FaDiscord />
-              </button>
+              {socialLinks.map((socialLink, index) => {
+                const { icon, link, label, newTab } = socialLink
+                if (newTab) {
+                  return (
+                    <a
+                      key={index}
+                      href={link}
+                      aria-label={label}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      className="btn btn-icon"
+                    >
+                      {icon}
+                    </a>
+                  )
+                }
+                return (
+                  <a
+                    key={index}
+                    href={link}
+                    aria-label={label}
+                    className="btn btn-icon"
+                  >
+                    {icon}
+                  </a>
+                )
+              })}
             </motion.div>
           </Wrapper>
         </motion.div>
