@@ -35,10 +35,8 @@ const navVariant = {
 const projectsVariant = {
   hidden: {
     opacity: 0,
-    x: "100vh",
   },
   visible: {
-    x: 0,
     opacity: 1,
     transition: {
       delay: 0.5,
@@ -46,7 +44,6 @@ const projectsVariant = {
     },
   },
   exit: {
-    x: "100vh",
     opacity: 0,
     transition: {
       duration: 0.5,
@@ -80,18 +77,23 @@ const buttonVariant = {
 // Image animation
 const imageVariant = {
   hidden: {
-    x: "100vh",
+    x: "200px",
+    opacity: 0,
   },
   visible: {
     x: 0,
+    opacity: 1,
     transition: {
-      delay: 0.5,
+      type: "tween",
+      delay: 0.6,
       duration: 0.5,
     },
   },
   exit: {
-    x: "100vh",
+    x: "200px",
+    opacity: 0,
     transition: {
+      type: "tween",
       duration: 0.5,
     },
   },
@@ -169,7 +171,7 @@ const MoreProjects = () => {
   return (
     <Wrapper className="container">
       {/* projects navigation */}
-      <AnimatePresence>
+      <AnimatePresence initial={false}>
         {showMoreProjects && (
           <motion.div
             variants={navVariant}
@@ -193,7 +195,7 @@ const MoreProjects = () => {
         )}
       </AnimatePresence>
       {/* project */}
-      <AnimatePresence>
+      <AnimatePresence initial={false}>
         {showMoreProjects && (
           <motion.div
             variants={projectsVariant}
@@ -202,7 +204,7 @@ const MoreProjects = () => {
             exit="exit"
             className="project"
           >
-            <AnimatePresence>
+            <AnimatePresence initial={false}>
               <motion.div
                 key={value}
                 variants={imageVariant}
@@ -211,7 +213,7 @@ const MoreProjects = () => {
                 exit="exit"
                 className="image-box"
               >
-                <GatsbyImage image={pathToImage} alt={name} />
+                <GatsbyImage class="img" image={pathToImage} alt={name} />
 
                 <motion.div
                   variants={overlayVariant}

@@ -7,7 +7,7 @@ const Wrapper = styled.section`
   align-items: center;
   justify-items: center;
   column-gap: 3.2rem;
-  margin-top: 2.4rem !important;
+  margin-top: 4.8rem !important;
   margin-bottom: 5.6rem;
 
   .background {
@@ -78,17 +78,18 @@ const Wrapper = styled.section`
   .project {
     position: relative;
     padding: 3.2rem 0;
-    height: 70rem;
+    height: 80rem;
+    width: 100%;
 
     .image-box {
       position: relative;
-      width: 100%;
-      height: 45rem;
       overflow: hidden;
+      height: 100%;
+      width: 100%;
+      max-height: 50rem;
       box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
 
-      img {
-        height: 100%;
+      .img {
         width: 100%;
         object-fit: cover;
       }
@@ -106,7 +107,6 @@ const Wrapper = styled.section`
     .text-box {
       width: 100%;
       padding: 1.6rem 3.2rem;
-      /* background: var(--color-background-2); */
       color: var(--color-text-secondary);
       line-height: 1.5;
 
@@ -151,8 +151,9 @@ const Wrapper = styled.section`
     flex-direction: column;
 
     .project {
+      margin: 0;
       .image-box {
-        height: 60rem;
+        max-height: 60rem;
       }
     }
 
@@ -167,26 +168,17 @@ const Wrapper = styled.section`
     .projects-nav::before {
       display: none;
     }
-
-    .project {
-      height: 85rem;
-      margin: 0;
-    }
   }
 
   @media only screen and (max-width: 37.5em) {
     .project {
-      height: 77rem;
+      height: 70rem;
       .image-box {
-        width: 100%;
-        height: auto;
+        max-height: 40rem;
       }
-    }
-  }
-
-  @media only screen and (max-width: 28em) {
-    .project {
-      height: 60rem;
+      .img {
+        height: 100%;
+      }
     }
   }
 `

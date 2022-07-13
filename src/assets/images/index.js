@@ -24,7 +24,6 @@ import plant from "../images/illustrations/plant.svg"
 import tree2 from "../images/illustrations/tree-2.svg"
 import tree2DarkMode from "../images/illustrations/tree-2-dark-mode.svg"
 import cat from "../images/illustrations/cat.svg"
-import catDarkMode from "../images/illustrations/cat-dark-mode.svg"
 
 export {
   smallHill,
@@ -53,5 +52,4 @@ export {
   tree2,
   tree2DarkMode,
   cat,
-  catDarkMode,
 }
