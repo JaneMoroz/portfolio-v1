@@ -9,6 +9,7 @@ const Wrapper = styled.section`
   column-gap: 3.2rem;
   margin-top: 4.8rem !important;
   margin-bottom: 5.6rem;
+  overflow-x: hidden;
 
   .background {
     position: absolute;
