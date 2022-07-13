@@ -1,5 +1,6 @@
 import React, { useState, useContext, createContext, useEffect } from "react"
 import { getStorageTheme, saveStorageTheme } from "../utils/storage"
+import scrollTo from "gatsby-plugin-smoothscroll"
 
 const AppContext = createContext()
 
@@ -35,6 +36,12 @@ export const AppProvider = ({ children }) => {
     document.documentElement.className = theme
     saveStorageTheme(theme)
   }, [theme])
+
+  useEffect(() => {
+    if (showMoreProjects) {
+      scrollTo("#more-projects")
+    }
+  }, [showMoreProjects])
 
   return (
     <AppContext.Provider

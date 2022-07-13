@@ -169,7 +169,7 @@ const MoreProjects = () => {
   let pathToImage = getImage(image)
 
   return (
-    <Wrapper className="container">
+    <Wrapper id="more-projects" className="container">
       {/* projects navigation */}
       <AnimatePresence initial={false}>
         {showMoreProjects && (
