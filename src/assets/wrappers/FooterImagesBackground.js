@@ -50,8 +50,11 @@ const Wrapper = styled.div`
   }
 
   @media only screen and (max-width: 37.5em) {
-    .background-2,
     .background-1 {
+      top: 65%;
+      left: -5%;
+    }
+    .background-2 {
       display: none;
     }
   }

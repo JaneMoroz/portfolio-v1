@@ -79,7 +79,6 @@ const FooterImagesBackground = () => {
         variants={bigHillVariant}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true }}
         className="background background-1"
       >
         <img src={plant} alt="plant" />
@@ -90,7 +89,6 @@ const FooterImagesBackground = () => {
           variants={girlVariant}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
           className="background background-2"
         >
           <img src={girlFooter} alt="girl is waving her hand happily" />
@@ -101,7 +99,6 @@ const FooterImagesBackground = () => {
           variants={girlVariant}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
           className="background background-2"
         >
           <img src={girlFooterDarkMode} alt="girl is waving her hand happily" />
@@ -113,7 +110,6 @@ const FooterImagesBackground = () => {
           variants={smallHillVariant}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
           className="background background-3"
         >
           <img src={smallHill} alt="small hill" />
@@ -124,7 +120,6 @@ const FooterImagesBackground = () => {
           variants={smallHillVariant}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
           className="background background-3"
         >
           <img src={smallHillDarkMode} alt="small hill" />
