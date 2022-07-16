@@ -11,14 +11,16 @@ require("dotenv").config({
 module.exports = {
   /* Your site config here */
   siteMetadata: {
-    title: "Jane Moroz's Portfolio",
+    title: "Jane Moroz · Portfolio",
     description:
-      "Jane Moroz is a software engineer, who is passionate about technology, learning new things and creating truly beautiful and efficient digital products.",
+      "Jane Moroz is a web developer, who is passionate about technology, learning new things and creating truly beautiful, efficient and accessible digital products.",
     author: {
       name: "Jane Moroz",
       minibio:
-        "<strong>Jane Moroz</strong> is a software engineer, who is passionate about technology, learning new things and creating truly beautiful and efficient digital products. She's also interested in web design , and an advocate of building not only efficient but user-friendly and appealing websites and mobile apps.",
+        "<strong>Jane Moroz</strong> is a web developer, who is passionate about technology, learning new things and creating truly beautiful, efficient and accessible digital products. She's also interested in web design , and an advocate of building not only efficient but user-friendly and appealing websites and mobile apps.",
     },
+    canonicalUrl: "https://jane-moroz-dev.netlify.app",
+    image: "/og.png",
     social: {
       twitter: "@jane_moroz",
     },
