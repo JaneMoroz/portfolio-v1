@@ -9,6 +9,7 @@ First iteration of my personal website built with Gatsby
 - [x] Local Storage
 - [x] Light/Dark Theme
 - [x] Contentful CMS
+- [x] Localization
 
 ## 🧐 What's inside?
 
