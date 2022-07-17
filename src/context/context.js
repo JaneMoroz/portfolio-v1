@@ -4,7 +4,7 @@ import { getStorageTheme, saveStorageTheme } from "../utils/storage"
 const AppContext = createContext()
 
 export const AppProvider = ({ children }) => {
-  const page = window.location.pathname
+  const [page, setPage] = useState("/")
   const [theme, setTheme] = useState("light-theme")
   const [menu, setMenu] = useState(false)
   const [showMoreProjects, setShowMoreProjects] = useState(false)
@@ -36,6 +36,10 @@ export const AppProvider = ({ children }) => {
     document.documentElement.className = theme
     saveStorageTheme(theme)
   }, [theme])
+
+  useEffect(() => {
+    setPage(window.location.pathname)
+  }, [])
 
   return (
     <AppContext.Provider

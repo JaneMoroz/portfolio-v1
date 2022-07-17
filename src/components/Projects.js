@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import Wrapper from "../assets/wrappers/Projects"
 import { graphql, useStaticQuery } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
@@ -96,6 +96,7 @@ const query = graphql`
         description {
           description
         }
+        node_locale
       }
     }
   }
@@ -103,9 +104,21 @@ const query = graphql`
 
 const Projects = () => {
   const { showMoreProjects, toggleMoreProjects, page } = useGlobalContext()
+  const [projects, setProjects] = useState([])
   const {
-    allContentfulProject: { nodes: projects },
+    allContentfulProject: { nodes: projectsData },
   } = useStaticQuery(query)
+
+  // Localization
+  useEffect(() => {
+    if (page === "/ru") {
+      setProjects(projectsData.filter(project => project.node_locale === "ru"))
+    } else {
+      setProjects(
+        projectsData.filter(project => project.node_locale === "en-US")
+      )
+    }
+  }, [page])
 
   return (
     <Wrapper id="projects" className="container">

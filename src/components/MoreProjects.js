@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import Wrapper from "../assets/wrappers/MoreProjects"
 import { graphql, useStaticQuery } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
@@ -149,18 +149,25 @@ const query = graphql`
         description {
           description
         }
+        node_locale
       }
     }
   }
 `
 
 const MoreProjects = () => {
-  const { showMoreProjects, toggleMoreProjects } = useGlobalContext()
   const {
-    allContentfulProject: { nodes: projects },
+    allContentfulProject: { nodes: projectsData },
   } = useStaticQuery(query)
-  const names = setupNames(projects)
+  const { showMoreProjects, toggleMoreProjects, page } = useGlobalContext()
+  const [projects, setProjects] = useState(
+    projectsData.filter(project => project.node_locale === "en-US")
+  )
   const [value, setValue] = useState(0)
+  const names = setupNames(
+    projectsData.filter(project => project.node_locale === "en-US")
+  )
+
   let {
     name,
     description: { description },
@@ -168,6 +175,22 @@ const MoreProjects = () => {
     image,
   } = projects[value]
   let pathToImage = getImage(image)
+
+  // Localization
+  useEffect(() => {
+    let tempProjects = []
+    if (page === "/ru") {
+      tempProjects = projectsData.filter(
+        project => project.node_locale === "ru"
+      )
+      setProjects(tempProjects)
+    } else {
+      tempProjects = projectsData.filter(
+        project => project.node_locale === "en-US"
+      )
+      setProjects(tempProjects)
+    }
+  }, [page])
 
   return (
     <Wrapper id="more-projects" className="container">

@@ -125,7 +125,7 @@ const Menu = () => {
               </button>
             </motion.div>
             <motion.button variants={menuVariant} className="btn btn-outlined">
-              resume
+              <FormattedMessage id="cv-btn" defaultMessage="resume" />
             </motion.button>
             <motion.div variants={menuVariant} className="social">
               {socialLinks.map((socialLink, index) => {

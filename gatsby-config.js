@@ -32,20 +32,13 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     {
-      resolve: `gatsby-plugin-webfonts`,
+      resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: {
-          google: [
-            {
-              family: "Montserrat",
-              variants: ["300", "400", "500"],
-            },
-            {
-              family: "Fascinate",
-              variants: ["400"],
-            },
-          ],
-        },
+        fonts: [
+          `fascinate\:400`,
+          `montserrat\:300,400,500`, // you can also specify font weights and styles
+        ],
+        display: "swap",
       },
     },
     {
