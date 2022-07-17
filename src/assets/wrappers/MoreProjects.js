@@ -4,7 +4,6 @@ const Wrapper = styled.section`
   position: relative;
   display: grid;
   grid-template-columns: max-content 3fr;
-  align-items: center;
   justify-items: center;
   column-gap: 3.2rem;
   margin-top: 4.8rem !important;
@@ -33,6 +32,7 @@ const Wrapper = styled.section`
     overflow-y: auto;
     scroll-snap-type: y mandatory;
     max-height: 50rem;
+    margin-top: 3.2rem;
 
     ::-webkit-scrollbar {
       height: 2px;
@@ -149,6 +149,7 @@ const Wrapper = styled.section`
   @media only screen and (max-width: 56.25em) {
     overflow: hidden;
     display: flex;
+    align-items: center;
     flex-direction: column;
 
     .project {
@@ -164,6 +165,7 @@ const Wrapper = styled.section`
       width: 100%;
       scroll-snap-type: x mandatory;
       padding: 1.6rem 2.4rem;
+      margin-top: 0;
     }
 
     .projects-nav::before {
@@ -173,7 +175,7 @@ const Wrapper = styled.section`
 
   @media only screen and (max-width: 37.5em) {
     .project {
-      height: 70rem;
+      height: 65rem;
       .image-box {
         max-height: 40rem;
       }

@@ -34,7 +34,7 @@ const smallHillVariant = {
     x: 0,
     opacity: 1,
     transition: {
-      delay: 1,
+      delay: 0.5,
       duration: 0.5,
     },
   },
@@ -154,7 +154,6 @@ const FooterImagesBackground = () => {
           variants={treeVariant}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
           className="background background-5"
         >
           <img src={tree2} alt="tree" />
@@ -165,7 +164,6 @@ const FooterImagesBackground = () => {
           variants={treeVariant}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
           className="background background-5"
         >
           <img src={tree2DarkMode} alt="tree" />
