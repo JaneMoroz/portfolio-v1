@@ -4,6 +4,7 @@ import { getStorageTheme, saveStorageTheme } from "../utils/storage"
 const AppContext = createContext()
 
 export const AppProvider = ({ children }) => {
+  const page = window.location.pathname
   const [theme, setTheme] = useState("light-theme")
   const [menu, setMenu] = useState(false)
   const [showMoreProjects, setShowMoreProjects] = useState(false)
@@ -39,6 +40,7 @@ export const AppProvider = ({ children }) => {
   return (
     <AppContext.Provider
       value={{
+        page,
         theme,
         toggleTheme,
         menu,

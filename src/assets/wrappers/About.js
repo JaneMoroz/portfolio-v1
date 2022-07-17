@@ -34,6 +34,10 @@ const Wrapper = styled.section`
       border-bottom: 2px solid var(--color-program);
       padding: 1.2rem 2.4rem;
       color: var(--color-program);
+
+      span {
+        text-transform: lowercase;
+      }
     }
 
     .program-btns {

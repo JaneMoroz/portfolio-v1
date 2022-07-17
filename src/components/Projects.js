@@ -5,6 +5,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa"
 import { AnimatePresence, motion } from "framer-motion"
 import { useGlobalContext } from "../context/context"
+import { FormattedMessage } from "react-intl"
 
 // From left animation
 const fromLeftVariant = {
@@ -101,14 +102,16 @@ const query = graphql`
 `
 
 const Projects = () => {
-  const { showMoreProjects, toggleMoreProjects } = useGlobalContext()
+  const { showMoreProjects, toggleMoreProjects, page } = useGlobalContext()
   const {
     allContentfulProject: { nodes: projects },
   } = useStaticQuery(query)
 
   return (
     <Wrapper id="projects" className="container">
-      <h2>jane.projects</h2>
+      <h2 className={page === "/ru" ? "no-cursive" : ""}>
+        <FormattedMessage id="projects-title" defaultMessage="projects" />
+      </h2>
       {/* projects */}
       {projects.map(project => {
         const {
@@ -141,7 +144,12 @@ const Projects = () => {
             </div>
             <div className="text-box">
               <h5>
-                <span>featured project</span>
+                <span>
+                  <FormattedMessage
+                    id="featured"
+                    defaultMessage="featured project"
+                  />
+                </span>
               </h5>
               <h3>{name}</h3>
               <div className="details">
@@ -185,7 +193,7 @@ const Projects = () => {
             onClick={() => toggleMoreProjects()}
             className="btn btn-outlined"
           >
-            show more
+            <FormattedMessage id="show-more-btn" defaultMessage="show more" />
           </motion.button>
         )}
       </AnimatePresence>

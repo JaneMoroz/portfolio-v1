@@ -111,6 +111,10 @@ h1 span {
   text-transform: capitalize;
 }
 
+.no-cursive {
+  font-family: var(--main-font);
+}
+
 h2 {
   font-family: var(--accent-font);
   text-transform: lowercase;

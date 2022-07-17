@@ -7,6 +7,7 @@ import disk from "../assets/images/illustrations/floppy-disk.svg"
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa"
 import { AnimatePresence, motion } from "framer-motion"
 import { useGlobalContext } from "../context/context"
+import { FormattedMessage } from "react-intl"
 
 // Navigation animation
 const navVariant = {
@@ -272,7 +273,7 @@ const MoreProjects = () => {
             onClick={() => toggleMoreProjects()}
             className="btn btn-outlined"
           >
-            show less
+            <FormattedMessage id="show-less-btn" defaultMessage="show less" />
           </motion.button>
         )}
       </AnimatePresence>

@@ -8,6 +8,12 @@ const Wrapper = styled.section`
   clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
   overflow: hidden;
 
+  .btns-container {
+    display: flex;
+    align-items: center;
+    column-gap: 2rem;
+  }
+
   .hero {
     position: relative;
     display: grid;

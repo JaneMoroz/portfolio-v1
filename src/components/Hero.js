@@ -2,8 +2,10 @@ import React from "react"
 import Wrapper from "../assets/wrappers/Hero"
 import { HeroImagesBackground } from "./"
 import { light, lightDarkMode } from "../assets/images"
-import { motion, useViewportScroll, useTransform } from "framer-motion"
+import { motion, useScroll, useTransform } from "framer-motion"
 import { useGlobalContext } from "../context/context"
+import { FormattedMessage } from "react-intl"
+import { Link } from "gatsby"
 
 // Lamp infinite animation
 const lampVariant = {
@@ -18,9 +20,10 @@ const lampVariant = {
 }
 
 const Hero = () => {
-  const { theme, toggleTheme } = useGlobalContext()
+  // const page = window.location.pathname
+  const { theme, toggleTheme, page } = useGlobalContext()
   // Parallax
-  const { scrollYProgress } = useViewportScroll()
+  const { scrollYProgress } = useScroll()
   const yText = useTransform(scrollYProgress, [0, 1], [0, 100 * 5])
 
   return (
@@ -58,15 +61,40 @@ const Hero = () => {
         >
           <div className="text-box">
             <h1>
-              Hi, my name is <span>Jane</span>.
+              <FormattedMessage
+                id="greetings"
+                defaultMessage="Hi, my name is "
+              />
+              <span className={page === "/ru" ? "no-cursive" : ""}>
+                <FormattedMessage id="name" defaultMessage="Jane" />
+              </span>
+              .
             </h1>
-            <h1>I build things for the web.</h1>
+            <h1>
+              <FormattedMessage
+                id="more-info"
+                defaultMessage="I build things for the web."
+              />
+            </h1>
             <h4>
-              I’m a web developer who is passionate about technology, learning
+              <FormattedMessage
+                id="sub-more-info"
+                defaultMessage="I’m a web developer who is passionate about technology, learning
               new things and creating truly beautiful and efficient digital
-              products.
+              products."
+              />
             </h4>
-            <button className="btn btn-outlined">resume</button>
+            <div className="btns-container">
+              <button className="btn btn-outlined">
+                <FormattedMessage id="cv-btn" defaultMessage="resume" />
+              </button>
+              <Link
+                to={page === "/ru" ? "/" : "/ru"}
+                className="btn btn-outlined btn-language"
+              >
+                {page === "/ru" ? "Английский" : "Russian"}
+              </Link>
+            </div>
           </div>
         </motion.div>
         {/* images */}

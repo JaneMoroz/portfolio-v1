@@ -2,12 +2,17 @@ import React from "react"
 import Wrapper from "../assets/wrappers/Footer"
 import { FooterImagesBackground } from "./"
 import { socialLinks } from "../assets/data/links"
+import { useGlobalContext } from "../context/context"
+import { FormattedMessage } from "react-intl"
 
 const Footer = () => {
+  const { page } = useGlobalContext()
   return (
     <Wrapper id="contact">
       <div className="footer container">
-        <h2>jane.contact</h2>
+        <h2 className={page === "/ru" ? "no-cursive" : ""}>
+          <FormattedMessage id="contact-title" defaultMessage="contact" />
+        </h2>
         {/* form */}
         <form
           action="https://formspree.io/f/xrgjvbkn"
@@ -15,16 +20,27 @@ const Footer = () => {
           className="form"
         >
           <div className="form-row">
-            <input name="name" type="text" placeholder="name" />
+            <input
+              name="name"
+              type="text"
+              placeholder={page === "/ru" ? "имя" : "name"}
+            />
           </div>
           <div className="form-row">
-            <input name="email" type="email" placeholder="email" />
+            <input
+              name="email"
+              type="email"
+              placeholder={page === "/ru" ? "имейл" : "email"}
+            />
           </div>
           <div className="form-row">
-            <textarea name="message" placeholder="message" />
+            <textarea
+              name="message"
+              placeholder={page === "/ru" ? "сообщение" : "message"}
+            />
           </div>
           <button type="submit" className="btn btn-outlined">
-            submit
+            <FormattedMessage id="submit-btn" defaultMessage="submit" />
           </button>
         </form>
         {/* background images */}

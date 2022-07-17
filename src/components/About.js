@@ -9,6 +9,7 @@ import {
 import { mouse, mouseDarkMode } from "../assets/images/index"
 import { motion } from "framer-motion"
 import { useGlobalContext } from "../context/context"
+import { FormattedMessage } from "react-intl"
 
 // Mouse animation
 const mouseVariant = {
@@ -51,7 +52,7 @@ const typeBlockVariant = {
 }
 
 const About = () => {
-  const { theme } = useGlobalContext()
+  const { theme, page } = useGlobalContext()
   const techTags = [
     "javascript",
     "typescript",
@@ -95,7 +96,9 @@ const About = () => {
           <img src={mouseDarkMode} alt="mouse" />
         </motion.div>
       )}
-      <h2>jane.about</h2>
+      <h2 className={page === "/ru" ? "no-cursive" : ""}>
+        <FormattedMessage id="about-title" defaultMessage="about me" />
+      </h2>
       {/* program */}
       <motion.div
         variants={programVariant}
@@ -106,7 +109,10 @@ const About = () => {
       >
         {/* program header */}
         <div className="program-header">
-          <span>jane.exe</span>
+          <span>
+            <FormattedMessage id="name" defaultMessage="jane" />
+            .exe
+          </span>
           <div className="program-btns">
             <FaWindowMinimize />
             <FaWindowMaximize />
@@ -120,7 +126,13 @@ const About = () => {
             <div className="question">
               <FaChevronRight className="icon" />
               <h5>
-                jane.<span>technologies</span>
+                <FormattedMessage id="name" defaultMessage="jane" />.
+                <span>
+                  <FormattedMessage
+                    id="technologies"
+                    defaultMessage="technologies"
+                  />
+                </span>
               </h5>
             </div>
             <div className="answer">
@@ -138,11 +150,19 @@ const About = () => {
             <div className="question">
               <FaChevronRight className="icon" />
               <h5>
-                jane.<span>hobbies</span>
+                <FormattedMessage id="name" defaultMessage="jane" />.
+                <span>
+                  <FormattedMessage id="hobbies" defaultMessage="hobbies" />
+                </span>
               </h5>
             </div>
             <div className="answer">
-              <p>hiking, yoga, playing video games and board games</p>
+              <p>
+                <FormattedMessage
+                  id="hobbies-full"
+                  defaultMessage="hiking, yoga, playing video games and board games"
+                />
+              </p>
             </div>
           </div>
           {/* dream */}
@@ -150,13 +170,20 @@ const About = () => {
             <div className="question">
               <FaChevronRight className="icon" />
               <h5>
-                jane.<span>dream</span>
+                <FormattedMessage id="name" defaultMessage="jane" />.
+                <span>
+                  <FormattedMessage id="dream" defaultMessage="dream" />
+                </span>
               </h5>
             </div>
             <div className="answer">
               <p>
-                i have a dream of building something that makes people’s lives
-                easier and better
+                <FormattedMessage
+                  id="dream-full"
+                  defaultMessage="i have a
+                dream of building something that makes people’s lives easier and
+                better"
+                />
               </p>
             </div>
           </div>

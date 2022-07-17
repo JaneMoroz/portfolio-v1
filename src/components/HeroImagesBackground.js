@@ -16,7 +16,7 @@ import {
   smallCloud,
   smallCloudDarkMode,
 } from "../assets/images"
-import { motion, useViewportScroll, useTransform } from "framer-motion"
+import { motion, useScroll, useTransform } from "framer-motion"
 import { useGlobalContext } from "../context/context"
 
 // From bottom animation
@@ -94,7 +94,7 @@ const smallCloudVariant = {
 const HeroImagesBackground = () => {
   const { theme } = useGlobalContext()
   // Parallax
-  const { scrollYProgress } = useViewportScroll()
+  const { scrollYProgress } = useScroll()
   const yBackground1 = useTransform(scrollYProgress, [0, 1], [0, 100 * -5])
   const yBackground2 = useTransform(scrollYProgress, [0, 1], [0, 100 * -2])
   const yBackground3 = useTransform(scrollYProgress, [0, 1], [0, 100 * 1])

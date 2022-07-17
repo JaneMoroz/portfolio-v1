@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion"
 import scrollTo from "gatsby-plugin-smoothscroll"
 import { FaBars } from "react-icons/fa"
 import { socialLinks } from "../assets/data/links"
+import { FormattedMessage } from "react-intl"
 
 // Expanding background animation
 const containerVariant = {
@@ -64,7 +65,7 @@ const menuVariant = {
 }
 
 const Menu = () => {
-  const { menu, toggleMenu } = useGlobalContext()
+  const { menu, toggleMenu, page } = useGlobalContext()
   const handleScroll = section => {
     scrollTo(section)
     toggleMenu()
@@ -97,16 +98,30 @@ const Menu = () => {
             </motion.button>
             <motion.div variants={menuVariant} className="links">
               <button onClick={() => handleScroll("#home")} className="btn">
-                <h2>home</h2>
+                <h2 className={page === "/ru" ? "no-cursive" : ""}>
+                  <FormattedMessage id="menu-home" defaultMessage="home" />
+                </h2>
               </button>
               <button onClick={() => handleScroll("#about")} className="btn">
-                <h2>about</h2>
+                <h2 className={page === "/ru" ? "no-cursive" : ""}>
+                  <FormattedMessage id="menu-about" defaultMessage="about" />
+                </h2>
               </button>
               <button onClick={() => handleScroll("#projects")} className="btn">
-                <h2>projects</h2>
+                <h2 className={page === "/ru" ? "no-cursive" : ""}>
+                  <FormattedMessage
+                    id="menu-projects"
+                    defaultMessage="projects"
+                  />
+                </h2>
               </button>
               <button onClick={() => handleScroll("#contact")} className="btn">
-                <h2>contact</h2>
+                <h2 className={page === "/ru" ? "no-cursive" : ""}>
+                  <FormattedMessage
+                    id="menu-contact"
+                    defaultMessage="contact"
+                  />
+                </h2>
               </button>
             </motion.div>
             <motion.button variants={menuVariant} className="btn btn-outlined">
