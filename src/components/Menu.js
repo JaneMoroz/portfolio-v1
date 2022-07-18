@@ -124,9 +124,19 @@ const Menu = () => {
                 </h2>
               </button>
             </motion.div>
-            <motion.button variants={menuVariant} className="btn btn-outlined">
+            <motion.a
+              href={
+                page === "/ru"
+                  ? "/ишунина-евгения-cv.pdf"
+                  : "/ishunina-evgeniya-cv.pdf"
+              }
+              target="_blank"
+              rel="noopener noreferrer"
+              variants={menuVariant}
+              className="btn btn-outlined"
+            >
               <FormattedMessage id="cv-btn" defaultMessage="resume" />
-            </motion.button>
+            </motion.a>
             <motion.div variants={menuVariant} className="social">
               {socialLinks.map((socialLink, index) => {
                 const { icon, link, label, newTab } = socialLink

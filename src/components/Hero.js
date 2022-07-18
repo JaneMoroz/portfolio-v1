@@ -86,15 +86,18 @@ const Hero = () => {
               />
             </h4>
             <div className="btns-container">
-              <button className="btn btn-outlined">
-                <FormattedMessage id="cv-btn" defaultMessage="resume" />
-              </button>
-              {/* <Link
-                to={page === "/ru" ? "/" : "/ru"}
-                className="btn btn-outlined btn-language"
+              <a
+                href={
+                  page === "/ru"
+                    ? "/ишунина-евгения-cv.pdf"
+                    : "/ishunina-evgeniya-cv.pdf"
+                }
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-outlined"
               >
-                {page === "/ru" ? "Английский" : "Russian"}
-              </Link> */}
+                <FormattedMessage id="cv-btn" defaultMessage="resume" />
+              </a>
               <Link
                 to={page === "/ru" ? "/" : "/ru"}
                 className="btn btn-language"
