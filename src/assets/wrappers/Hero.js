@@ -14,6 +14,12 @@ const Wrapper = styled.section`
     column-gap: 2rem;
   }
 
+  .btn-language {
+    display: inline-flex;
+    font-size: 3.6rem;
+    color: var(--color-dark-pink);
+  }
+
   .hero {
     position: relative;
     display: grid;
@@ -32,6 +38,10 @@ const Wrapper = styled.section`
   }
 
   @media only screen and (max-width: 56.25em) {
+    .hero-text {
+      padding-bottom: 4.8rem;
+    }
+
     h1 {
       font-size: 2.4rem;
 
@@ -47,14 +57,15 @@ const Wrapper = styled.section`
 
   @media only screen and (max-width: 37.5em) {
     height: 85rem;
-    .btn-outlined {
-      margin-top: 2rem;
-    }
     .hero {
       grid-template-columns: 3fr 1fr;
     }
     h4 {
       display: none;
+    }
+
+    .subTitle {
+      margin-bottom: 2.4rem;
     }
   }
 `

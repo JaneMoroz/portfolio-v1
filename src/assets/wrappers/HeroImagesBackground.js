@@ -82,6 +82,7 @@ const Wrapper = styled.div`
     .background-3 {
       top: 50%;
       left: -85%;
+      z-index: -1;
     }
 
     .background-4 {

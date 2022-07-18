@@ -22,7 +22,7 @@ export const socialLinks = [
   },
   {
     icon: <FaLinkedinIn />,
-    link: "https://www.linkedin.com/in/eugenia-ishunina-b1b452244/",
+    link: "https://www.linkedin.com/in/eugenia-ishunina",
     label: "Linkedin",
     newTab: true,
   },

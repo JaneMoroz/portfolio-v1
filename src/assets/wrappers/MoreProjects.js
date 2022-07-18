@@ -35,8 +35,8 @@ const Wrapper = styled.section`
     margin-top: 3.2rem;
 
     ::-webkit-scrollbar {
-      height: 2px;
-      width: 2px;
+      height: 7px;
+      width: 7px;
     }
 
     ::-webkit-scrollbar-track {
@@ -153,6 +153,7 @@ const Wrapper = styled.section`
     flex-direction: column;
 
     .project {
+      height: 90rem;
       margin: 0;
       .image-box {
         max-height: 60rem;
@@ -175,7 +176,7 @@ const Wrapper = styled.section`
 
   @media only screen and (max-width: 37.5em) {
     .project {
-      height: 65rem;
+      height: 80rem;
       .image-box {
         max-height: 40rem;
       }

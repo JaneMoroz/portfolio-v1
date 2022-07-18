@@ -6,6 +6,7 @@ import { motion, useScroll, useTransform } from "framer-motion"
 import { useGlobalContext } from "../context/context"
 import { FormattedMessage } from "react-intl"
 import { Link } from "gatsby"
+import { MdOutlineLanguage } from "react-icons/md"
 
 // Lamp infinite animation
 const lampVariant = {
@@ -70,7 +71,7 @@ const Hero = () => {
               </span>
               .
             </h1>
-            <h1>
+            <h1 className="subTitle">
               <FormattedMessage
                 id="more-info"
                 defaultMessage="I build things for the web."
@@ -88,11 +89,17 @@ const Hero = () => {
               <button className="btn btn-outlined">
                 <FormattedMessage id="cv-btn" defaultMessage="resume" />
               </button>
-              <Link
+              {/* <Link
                 to={page === "/ru" ? "/" : "/ru"}
                 className="btn btn-outlined btn-language"
               >
                 {page === "/ru" ? "Английский" : "Russian"}
+              </Link> */}
+              <Link
+                to={page === "/ru" ? "/" : "/ru"}
+                className="btn btn-language"
+              >
+                <MdOutlineLanguage />
               </Link>
             </div>
           </div>
