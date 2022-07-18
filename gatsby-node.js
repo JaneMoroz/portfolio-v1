@@ -1,4 +1,4 @@
-const messages = require("./i18n-translations.json")
+const messages = require("./src/translations/i18n-translations.json")
 const { languages, defaultLanguage } = require("./src/i18n")
 
 exports.onCreatePage = async ({ page, actions }) => {

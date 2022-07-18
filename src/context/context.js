@@ -5,7 +5,7 @@ const AppContext = createContext()
 
 export const AppProvider = ({ children }) => {
   const [page, setPage] = useState("/")
-  const [theme, setTheme] = useState("light-theme")
+  const [theme, setTheme] = useState(undefined)
   const [menu, setMenu] = useState(false)
   const [showMoreProjects, setShowMoreProjects] = useState(false)
 

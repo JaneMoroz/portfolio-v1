@@ -1,6 +1,6 @@
 import React from "react"
 import { Location } from "@reach/router"
-import { getCurrentPageLanguage, getTranslatedPath } from "../linkUtils"
+import { getCurrentPageLanguage, getTranslatedPath } from "./linkUtils"
 
 // To keep the page language
 const LinkTranslated = ({ children = [], className = "", href = "/" }) => {

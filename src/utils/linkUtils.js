@@ -1,4 +1,4 @@
-import { defaultLanguage, languages } from "./i18n"
+import { defaultLanguage, languages } from "../i18n"
 
 // Function returns a route to a page with the same language as the current page.
 const getTranslatedPath = (pathname, to) => {
