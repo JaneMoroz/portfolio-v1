@@ -96,7 +96,7 @@ const About = () => {
           <img src={mouseDarkMode} alt="mouse" />
         </motion.div>
       )}
-      <h2 className={page === "/ru" ? "no-cursive" : ""}>
+      <h2 className={page === "/ru" || page === "/ru/" ? "no-cursive" : ""}>
         <FormattedMessage id="about-title" defaultMessage="about me" />
       </h2>
       {/* program */}

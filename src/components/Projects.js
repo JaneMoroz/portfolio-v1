@@ -111,7 +111,7 @@ const Projects = () => {
 
   // Localization
   useEffect(() => {
-    if (page === "/ru") {
+    if (page === "/ru" || page === "/ru/") {
       setProjects(projectsData.filter(project => project.node_locale === "ru"))
     } else {
       setProjects(
@@ -122,7 +122,7 @@ const Projects = () => {
 
   return (
     <Wrapper id="projects" className="container">
-      <h2 className={page === "/ru" ? "no-cursive" : ""}>
+      <h2 className={page === "/ru" || page === "/ru/" ? "no-cursive" : ""}>
         <FormattedMessage id="projects-title" defaultMessage="projects" />
       </h2>
       {/* projects */}

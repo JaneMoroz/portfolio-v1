@@ -4,7 +4,7 @@ import { getStorageTheme, saveStorageTheme } from "../utils/storage"
 const AppContext = createContext()
 
 export const AppProvider = ({ children }) => {
-  const [page, setPage] = useState("/")
+  const [page, setPage] = useState(undefined)
   const [theme, setTheme] = useState(undefined)
   const [menu, setMenu] = useState(false)
   const [showMoreProjects, setShowMoreProjects] = useState(false)

@@ -179,7 +179,7 @@ const MoreProjects = () => {
   // Localization
   useEffect(() => {
     let tempProjects = []
-    if (page === "/ru") {
+    if (page === "/ru" || page === "/ru/") {
       tempProjects = projectsData.filter(
         project => project.node_locale === "ru"
       )

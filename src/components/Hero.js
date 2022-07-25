@@ -66,7 +66,11 @@ const Hero = () => {
                 id="greetings"
                 defaultMessage="Hi, my name is "
               />
-              <span className={page === "/ru" ? "no-cursive" : ""}>
+              <span
+                className={
+                  page === "/ru" || page === "/ru/" ? "no-cursive" : ""
+                }
+              >
                 <FormattedMessage id="name" defaultMessage="Jane" />
               </span>
               .
@@ -88,7 +92,7 @@ const Hero = () => {
             <div className="btns-container">
               <a
                 href={
-                  page === "/ru"
+                  page === "/ru" || page === "/ru/"
                     ? "/ишунина-евгения-cv.pdf"
                     : "/ishunina-evgeniya-cv.pdf"
                 }
@@ -99,7 +103,7 @@ const Hero = () => {
                 <FormattedMessage id="cv-btn" defaultMessage="resume" />
               </a>
               <Link
-                to={page === "/ru" ? "/" : "/ru"}
+                to={page === "/ru" || page === "/ru/" ? "/" : "/ru"}
                 className="btn btn-language"
               >
                 <MdOutlineLanguage />

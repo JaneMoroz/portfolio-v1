@@ -98,17 +98,29 @@ const Menu = () => {
             </motion.button>
             <motion.div variants={menuVariant} className="links">
               <button onClick={() => handleScroll("#home")} className="btn">
-                <h2 className={page === "/ru" ? "no-cursive" : ""}>
+                <h2
+                  className={
+                    page === "/ru" || page === "/ru/" ? "no-cursive" : ""
+                  }
+                >
                   <FormattedMessage id="menu-home" defaultMessage="home" />
                 </h2>
               </button>
               <button onClick={() => handleScroll("#about")} className="btn">
-                <h2 className={page === "/ru" ? "no-cursive" : ""}>
+                <h2
+                  className={
+                    page === "/ru" || page === "/ru/" ? "no-cursive" : ""
+                  }
+                >
                   <FormattedMessage id="menu-about" defaultMessage="about" />
                 </h2>
               </button>
               <button onClick={() => handleScroll("#projects")} className="btn">
-                <h2 className={page === "/ru" ? "no-cursive" : ""}>
+                <h2
+                  className={
+                    page === "/ru" || page === "/ru/" ? "no-cursive" : ""
+                  }
+                >
                   <FormattedMessage
                     id="menu-projects"
                     defaultMessage="projects"
@@ -116,7 +128,11 @@ const Menu = () => {
                 </h2>
               </button>
               <button onClick={() => handleScroll("#contact")} className="btn">
-                <h2 className={page === "/ru" ? "no-cursive" : ""}>
+                <h2
+                  className={
+                    page === "/ru" || page === "/ru/" ? "no-cursive" : ""
+                  }
+                >
                   <FormattedMessage
                     id="menu-contact"
                     defaultMessage="contact"
@@ -126,7 +142,7 @@ const Menu = () => {
             </motion.div>
             <motion.a
               href={
-                page === "/ru"
+                page === "/ru" || page === "/ru/"
                   ? "/ишунина-евгения-cv.pdf"
                   : "/ishunina-evgeniya-cv.pdf"
               }

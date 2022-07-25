@@ -10,7 +10,7 @@ const Footer = () => {
   return (
     <Wrapper id="contact">
       <div className="footer container">
-        <h2 className={page === "/ru" ? "no-cursive" : ""}>
+        <h2 className={page === "/ru" || page === "/ru/" ? "no-cursive" : ""}>
           <FormattedMessage id="contact-title" defaultMessage="contact" />
         </h2>
         {/* form */}
@@ -23,20 +23,24 @@ const Footer = () => {
             <input
               name="name"
               type="text"
-              placeholder={page === "/ru" ? "имя" : "name"}
+              placeholder={page === "/ru" || page === "/ru/" ? "имя" : "name"}
             />
           </div>
           <div className="form-row">
             <input
               name="email"
               type="email"
-              placeholder={page === "/ru" ? "имейл" : "email"}
+              placeholder={
+                page === "/ru" || page === "/ru/" ? "имейл" : "email"
+              }
             />
           </div>
           <div className="form-row">
             <textarea
               name="message"
-              placeholder={page === "/ru" ? "сообщение" : "message"}
+              placeholder={
+                page === "/ru" || page === "/ru/" ? "сообщение" : "message"
+              }
             />
           </div>
           <button type="submit" className="btn btn-outlined">
