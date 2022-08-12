@@ -1,4 +1,10 @@
-import React, { useState, useContext, createContext, useEffect } from "react"
+import React, {
+  useState,
+  useContext,
+  createContext,
+  useEffect,
+  useLayoutEffect,
+} from "react"
 import { getStorageTheme, saveStorageTheme } from "../utils/storage"
 
 const AppContext = createContext()
@@ -9,7 +15,7 @@ export const AppProvider = ({ children }) => {
   const [menu, setMenu] = useState(false)
   const [showMoreProjects, setShowMoreProjects] = useState(false)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setTheme(getStorageTheme())
   }, [])
 
