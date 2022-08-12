@@ -26,10 +26,15 @@ const Wrapper = styled.section`
     border: 2px solid var(--color-program);
     max-width: 80rem;
     margin: 4.8rem auto;
+    -webkit-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
     box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
 
     .program-header {
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
       justify-content: space-between;
       border-bottom: 2px solid var(--color-program);
       padding: 1.2rem 2.4rem;
@@ -41,8 +46,14 @@ const Wrapper = styled.section`
     }
 
     .program-btns {
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
       align-items: center;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
       justify-content: center;
       column-gap: 1rem;
     }
@@ -54,7 +65,11 @@ const Wrapper = styled.section`
     .program-el {
       margin-bottom: 3.6rem;
       .question {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
         align-items: center;
         column-gap: 1rem;
         margin-bottom: 1rem;

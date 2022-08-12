@@ -9,7 +9,11 @@ const Wrapper = styled.section`
   overflow: hidden;
 
   .btns-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     column-gap: 2rem;
   }
@@ -33,6 +37,7 @@ const Wrapper = styled.section`
       position: absolute;
       top: 1rem;
       left: 1rem;
+      -webkit-transform: translate(10%, -50%);
       transform: translate(10%, -50%);
     }
   }

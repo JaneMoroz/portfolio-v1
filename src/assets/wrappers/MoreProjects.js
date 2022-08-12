@@ -13,6 +13,7 @@ const Wrapper = styled.section`
     position: absolute;
     top: 90%;
     left: 0;
+    -webkit-transform: translate(0, -50%);
     transform: translate(0, -50%);
     z-index: -1;
   }
@@ -25,11 +26,17 @@ const Wrapper = styled.section`
 
   .projects-nav {
     position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
     row-gap: 1.6rem;
     margin-left: 1.6rem;
     overflow-y: auto;
+    -ms-scroll-snap-type: y mandatory;
     scroll-snap-type: y mandatory;
     max-height: 50rem;
     margin-top: 3.2rem;
@@ -57,6 +64,7 @@ const Wrapper = styled.section`
       text-align: start;
       color: var(--color-text-secondary);
       padding: 0.8rem 1.6rem;
+      -webkit-transition: all 0.3s;
       transition: all 0.3s;
     }
 
@@ -87,10 +95,12 @@ const Wrapper = styled.section`
       height: 100%;
       width: 100%;
       max-height: 50rem;
+      -webkit-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
       box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
 
       .img {
         width: 100%;
+        -o-object-fit: cover;
         object-fit: cover;
       }
 
@@ -111,12 +121,18 @@ const Wrapper = styled.section`
       line-height: 1.5;
 
       .header {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
         justify-content: space-between;
         margin-bottom: 1.6rem;
       }
 
       .buttons {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
         column-gap: 1.6rem;
       }
@@ -126,6 +142,8 @@ const Wrapper = styled.section`
       }
 
       .tech-tags {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
         column-gap: 1rem;
         justify-content: end;
@@ -148,8 +166,15 @@ const Wrapper = styled.section`
 
   @media only screen and (max-width: 56.25em) {
     overflow: hidden;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
 
     .project {
@@ -164,6 +189,7 @@ const Wrapper = styled.section`
       flex-direction: row;
       overflow-x: auto;
       width: 100%;
+      -ms-scroll-snap-type: x mandatory;
       scroll-snap-type: x mandatory;
       padding: 1.6rem 2.4rem;
       margin-top: 0;
