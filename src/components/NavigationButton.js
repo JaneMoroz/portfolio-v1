@@ -33,6 +33,7 @@ const NavigationButton = () => {
         whileHover="hover"
         className="btn menu-btn"
         onClick={() => toggleMenu()}
+        aria-label="menu"
       >
         <span>
           <FaBars />

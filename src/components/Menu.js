@@ -90,6 +90,7 @@ const Menu = () => {
               exit="exit"
               whileHover="hover"
               className="btn menu-btn"
+              aria-label="menu"
               onClick={() => toggleMenu()}
             >
               <span>

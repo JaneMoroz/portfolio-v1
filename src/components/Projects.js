@@ -179,6 +179,7 @@ const Projects = () => {
                   target="_blank"
                   rel="noreferrer noopener"
                   className="btn btn-icon"
+                  aria-label="Github"
                 >
                   <FaGithub />
                 </a>
@@ -187,6 +188,7 @@ const Projects = () => {
                   target="_blank"
                   rel="noreferrer noopener"
                   className="btn btn-icon"
+                  aria-label="Project's website"
                 >
                   <FaExternalLinkAlt />
                 </a>

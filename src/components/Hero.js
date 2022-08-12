@@ -36,6 +36,7 @@ const Hero = () => {
           onClick={() => {
             toggleTheme()
           }}
+          aria-label="day/night toggle"
         >
           {theme === "light-theme" && (
             <motion.img
@@ -105,6 +106,11 @@ const Hero = () => {
               <Link
                 to={page === "/ru" || page === "/ru/" ? "/" : "/ru"}
                 className="btn btn-language"
+                aria-label={
+                  page === "/ru" || page === "/ru/"
+                    ? "Изменить язык"
+                    : "Change language"
+                }
               >
                 <MdOutlineLanguage />
               </Link>
