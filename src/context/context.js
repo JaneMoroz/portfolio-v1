@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  useContext,
-  createContext,
-  useEffect,
-  useLayoutEffect,
-} from "react"
+import React, { useState, useContext, createContext, useEffect } from "react"
 import { getStorageTheme, saveStorageTheme } from "../utils/storage"
 
 const AppContext = createContext()
@@ -12,11 +6,22 @@ const AppContext = createContext()
 export const AppProvider = ({ children }) => {
   const [page, setPage] = useState(undefined)
   const [theme, setTheme] = useState(undefined)
-  const [menu, setMenu] = useState(false)
+  const [menuIsOpen, setMenuIsOpen] = useState(false)
   const [showMoreProjects, setShowMoreProjects] = useState(false)
 
-  useLayoutEffect(() => {
+  // Get theme from the local storage
+  useEffect(() => {
     setTheme(getStorageTheme())
+  }, [])
+
+  // Set theme and save it to the local storage when it gets changed
+  useEffect(() => {
+    document.documentElement.className = theme
+    saveStorageTheme(theme)
+  }, [theme])
+
+  useEffect(() => {
+    setPage(window.location.pathname)
   }, [])
 
   // Toggle theme handler
@@ -30,7 +35,7 @@ export const AppProvider = ({ children }) => {
 
   // Menu button handler
   const toggleMenu = () => {
-    setMenu(!menu)
+    setMenuIsOpen(!menuIsOpen)
   }
 
   // Show more projects button handler
@@ -38,22 +43,13 @@ export const AppProvider = ({ children }) => {
     setShowMoreProjects(!showMoreProjects)
   }
 
-  useEffect(() => {
-    document.documentElement.className = theme
-    saveStorageTheme(theme)
-  }, [theme])
-
-  useEffect(() => {
-    setPage(window.location.pathname)
-  }, [])
-
   return (
     <AppContext.Provider
       value={{
         page,
         theme,
         toggleTheme,
-        menu,
+        menuIsOpen,
         toggleMenu,
         showMoreProjects,
         toggleMoreProjects,

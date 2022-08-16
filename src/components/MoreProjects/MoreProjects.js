@@ -1,133 +1,21 @@
 import React, { useState, useEffect } from "react"
-import Wrapper from "../assets/wrappers/MoreProjects"
+import Wrapper from "../../assets/wrappers/MoreProjects"
 import { graphql, useStaticQuery } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import setupNames from "../utils/setupNames"
-import disk from "../assets/images/illustrations/floppy-disk.svg"
+import setupNames from "../../utils/setupNames"
+import disk from "../../assets/images/illustrations/floppy-disk.svg"
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa"
 import { AnimatePresence, motion } from "framer-motion"
-import { useGlobalContext } from "../context/context"
+import { useGlobalContext } from "../../context/context"
 import { FormattedMessage } from "react-intl"
-
-// Navigation animation
-const navVariant = {
-  hidden: {
-    opacity: 0,
-    x: "-100vh",
-  },
-  visible: {
-    x: 0,
-    opacity: 1,
-    transition: {
-      delay: 0.5,
-      duration: 0.5,
-    },
-  },
-  exit: {
-    x: "-100vh",
-    opacity: 0,
-    transition: {
-      duration: 0.5,
-    },
-  },
-}
-
-// Projects animation
-const projectsVariant = {
-  hidden: {
-    opacity: 0,
-  },
-  visible: {
-    opacity: 1,
-    transition: {
-      delay: 0.5,
-      duration: 0.5,
-    },
-  },
-  exit: {
-    opacity: 0,
-    transition: {
-      duration: 0.5,
-    },
-  },
-}
-
-// See less button animation
-const buttonVariant = {
-  hidden: {
-    opacity: 0,
-    x: "-100vw",
-  },
-  visible: {
-    x: 0,
-    opacity: 1,
-    transition: {
-      delay: 1,
-      duration: 0.5,
-    },
-  },
-  exit: {
-    x: "100vw",
-    opacity: 0,
-    transition: {
-      duration: 0.5,
-    },
-  },
-}
-
-// Image animation
-const imageVariant = {
-  hidden: {
-    x: "200px",
-    opacity: 0,
-  },
-  visible: {
-    x: 0,
-    opacity: 1,
-    transition: {
-      type: "tween",
-      delay: 0.6,
-      duration: 0.5,
-    },
-  },
-  exit: {
-    x: "200px",
-    opacity: 0,
-    transition: {
-      type: "tween",
-      duration: 0.5,
-    },
-  },
-}
-
-// Text animation
-const textVariant = {
-  hidden: {
-    opacity: 0,
-  },
-  visible: {
-    opacity: 1,
-    transition: {
-      delay: 1,
-    },
-  },
-  exit: {
-    opacity: 0,
-  },
-}
-
-// Overlay animation
-const overlayVariant = {
-  visible: {
-    opacity: 1,
-  },
-  hidden: {
-    opacity: 0.5,
-    transition: {
-      duration: 0.5,
-    },
-  },
-}
+import {
+  navVariant,
+  projectsVariant,
+  buttonVariant,
+  imageVariant,
+  textVariant,
+  overlayVariant2,
+} from "../../utils/animation"
 
 // Graphql query
 const query = graphql`
@@ -194,7 +82,7 @@ const MoreProjects = () => {
 
   return (
     <Wrapper id="more-projects" className="container">
-      {/* projects navigation */}
+      {/* Start of projects navigation */}
       <AnimatePresence initial={false}>
         {showMoreProjects && (
           <motion.div
@@ -218,7 +106,8 @@ const MoreProjects = () => {
           </motion.div>
         )}
       </AnimatePresence>
-      {/* project */}
+      {/* End of projects navigation */}
+      {/* Start of projects */}
       <AnimatePresence initial={false}>
         {showMoreProjects && (
           <motion.div
@@ -240,7 +129,7 @@ const MoreProjects = () => {
                 <GatsbyImage class="img" image={pathToImage} alt={name} />
 
                 <motion.div
-                  variants={overlayVariant}
+                  variants={overlayVariant2}
                   initial="visible"
                   whileInView="hidden"
                   className="image-overlay"
@@ -288,6 +177,8 @@ const MoreProjects = () => {
           </motion.div>
         )}
       </AnimatePresence>
+      {/* End of projects */}
+      {/* Start of show more/less button */}
       <AnimatePresence>
         {showMoreProjects && (
           <motion.button
@@ -302,6 +193,8 @@ const MoreProjects = () => {
           </motion.button>
         )}
       </AnimatePresence>
+      {/* End of show more/less button */}
+      {/* Start of image */}
       <AnimatePresence>
         {showMoreProjects && (
           <motion.div
@@ -315,6 +208,7 @@ const MoreProjects = () => {
           </motion.div>
         )}
       </AnimatePresence>
+      {/* End of image */}
     </Wrapper>
   )
 }

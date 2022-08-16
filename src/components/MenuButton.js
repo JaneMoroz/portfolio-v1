@@ -1,5 +1,5 @@
 import React from "react"
-import Wrapper from "../assets/wrappers/NavigationButton"
+import Wrapper from "../assets/wrappers/MenuButton"
 import { FaBars } from "react-icons/fa"
 import { motion } from "framer-motion"
 import { useGlobalContext } from "../context/context"
@@ -22,7 +22,7 @@ const menuButtonVariant = {
   },
 }
 
-const NavigationButton = () => {
+const MenuButton = () => {
   const { toggleMenu } = useGlobalContext()
   return (
     <Wrapper>
@@ -43,4 +43,4 @@ const NavigationButton = () => {
   )
 }
 
-export default NavigationButton
+export default MenuButton

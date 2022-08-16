@@ -1,6 +1,6 @@
 import React from "react"
 import Layout from "../components/Layout"
-import { NavigationButton } from "../components"
+import { MenuButton } from "../components"
 import {
   Seo,
   Menu,
@@ -16,7 +16,7 @@ export default function Home(props) {
   return (
     <SimpleLocalize {...props}>
       <Layout>
-        <NavigationButton />
+        <MenuButton />
         <Seo title={"Home"} />
         <Menu />
         <Hero />

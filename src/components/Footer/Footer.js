@@ -1,8 +1,8 @@
 import React from "react"
-import Wrapper from "../assets/wrappers/Footer"
-import { FooterImagesBackground } from "./"
-import { socialLinks } from "../assets/data/links"
-import { useGlobalContext } from "../context/context"
+import Wrapper from "../../assets/wrappers/Footer"
+import { FooterImagesBackground } from ".."
+import { socialLinks } from "../../assets/data/links"
+import { useGlobalContext } from "../../context/context"
 import { FormattedMessage } from "react-intl"
 
 const Footer = () => {

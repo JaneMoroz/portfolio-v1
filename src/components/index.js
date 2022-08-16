@@ -1,13 +1,14 @@
-import About from "./About"
-import Footer from "./Footer"
-import FooterImagesBackground from "./FooterImagesBackground"
-import Hero from "./Hero"
-import HeroImagesBackground from "./HeroImagesBackground"
+import About from "./About/About"
+import Footer from "./Footer/Footer"
+import FooterImagesBackground from "./Footer/FooterImagesBackground"
+import Hero from "./Hero/Hero"
+import HeroImagesBackground from "./Hero/HeroImagesBackground"
+import ToggleThemeButton from "./Hero/ToggleThemeButton"
 import Layout from "./Layout"
-import Menu from "./Menu"
-import MoreProjects from "./MoreProjects"
-import NavigationButton from "./NavigationButton"
-import Projects from "./Projects"
+import Menu from "./Navigation/Menu"
+import MoreProjects from "./MoreProjects/MoreProjects"
+import MenuButton from "./MenuButton"
+import Projects from "./Projects/Projects"
 import Seo from "./Seo"
 
 export {
@@ -16,10 +17,11 @@ export {
   FooterImagesBackground,
   Hero,
   HeroImagesBackground,
+  ToggleThemeButton,
   Layout,
   Menu,
   MoreProjects,
-  NavigationButton,
+  MenuButton,
   Projects,
   Seo,
 }

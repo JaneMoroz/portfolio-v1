@@ -1,28 +1,14 @@
 import React from "react"
-import Wrapper from "../assets/wrappers/Hero"
-import { HeroImagesBackground } from "./"
-import { light, lightDarkMode } from "../assets/images"
+import Wrapper from "../../assets/wrappers/Hero"
+import { HeroImagesBackground, ToggleThemeButton } from ".."
 import { motion, useScroll, useTransform } from "framer-motion"
-import { useGlobalContext } from "../context/context"
+import { useGlobalContext } from "../../context/context"
 import { FormattedMessage } from "react-intl"
 import { Link } from "gatsby"
 import { MdOutlineLanguage } from "react-icons/md"
 
-// Lamp infinite animation
-const lampVariant = {
-  animate: {
-    rotateZ: [5, -5],
-    transition: {
-      repeat: Infinity,
-      repeatType: "reverse",
-      duration: 2,
-    },
-  },
-}
-
 const Hero = () => {
-  // const page = window.location.pathname
-  const { theme, toggleTheme, page } = useGlobalContext()
+  const { page } = useGlobalContext()
   // Parallax
   const { scrollYProgress } = useScroll()
   const yText = useTransform(scrollYProgress, [0, 1], [0, 100 * 5])
@@ -30,31 +16,9 @@ const Hero = () => {
   return (
     <Wrapper id="home">
       <div className="hero container">
-        {/* dark/light mode button */}
-        <button
-          className="btn dark-light-mode-btn"
-          onClick={() => {
-            toggleTheme()
-          }}
-          aria-label="day/night toggle"
-        >
-          {theme === "light-theme" && (
-            <motion.img
-              variants={lampVariant}
-              animate="animate"
-              src={light}
-              alt="dark/light mode button"
-            />
-          )}
-          {theme === "dark-theme" && (
-            <motion.img
-              variants={lampVariant}
-              animate="animate"
-              src={lightDarkMode}
-              alt="dark/light mode button"
-            />
-          )}
-        </button>
+        {/* Theme Toggle Button */}
+        <ToggleThemeButton />
+        {/* Start of Text */}
         <motion.div
           initial={{ x: "-100vw", opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
@@ -117,7 +81,8 @@ const Hero = () => {
             </div>
           </div>
         </motion.div>
-        {/* images */}
+        {/* End of Text */}
+        {/* Images */}
         <HeroImagesBackground />
       </div>
     </Wrapper>

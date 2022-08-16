@@ -1,55 +1,20 @@
 import React from "react"
-import Wrapper from "../assets/wrappers/About"
+import Wrapper from "../../assets/wrappers/About"
 import {
   FaWindowClose,
   FaWindowMaximize,
   FaWindowMinimize,
   FaChevronRight,
 } from "react-icons/fa"
-import { mouse, mouseDarkMode } from "../assets/images/index"
+import { mouse, mouseDarkMode } from "../../assets/images/index"
 import { motion } from "framer-motion"
-import { useGlobalContext } from "../context/context"
+import { useGlobalContext } from "../../context/context"
 import { FormattedMessage } from "react-intl"
-
-// Mouse animation
-const mouseVariant = {
-  hidden: {
-    x: -50,
-    opacity: 0,
-  },
-  visible: {
-    x: 0,
-    opacity: 1,
-    transition: {
-      delay: 1,
-      duration: 0.5,
-    },
-  },
-}
-
-// Program animation
-const programVariant = {
-  hidden: {
-    y: "200",
-    opacity: 0,
-  },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      delay: 0.5,
-      duration: 0.5,
-    },
-  },
-}
-
-// Console type thing animation (don't know to call it)
-const typeBlockVariant = {
-  animate: {
-    opacity: [0, 1],
-    transition: { repeat: Infinity, repeatType: "reverse", duration: 0.7 },
-  },
-}
+import {
+  mouseVariant,
+  programVariant,
+  typeBlockVariant,
+} from "../../utils/animation"
 
 const About = () => {
   const { theme, page } = useGlobalContext()
