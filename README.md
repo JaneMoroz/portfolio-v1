@@ -10,26 +10,6 @@ First iteration of my personal website built with Gatsby
 - [x] Light/Dark Theme
 - [x] Contentful CMS
 - [x] Localization
-
-## 🧐 What's inside?
-
-A quick look at the top-level files and directories you'll see in a Gatsby project.
-
-    .
-    ├── node_modules
-    ├── src
-    ├── .gitignore
-    ├── .prettierrc
-    ├── gatsby-browser.js
-    ├── gatsby-config.js
-    ├── gatsby-node.js
-    ├── gatsby-ssr.js
-    ├── LICENSE
-    ├── package-lock.json
-    ├── package.json
-    ├── .env.development
-    ├── .env.production
-    └── README.md
     
 ## 📃 Available Scripts
 
