@@ -10,26 +10,6 @@ First iteration of my personal website built with Gatsby
 - [x] Light/Dark Theme
 - [x] Contentful CMS
 - [x] Localization
-
-## 🧐 What's inside?
-
-A quick look at the top-level files and directories you'll see in a Gatsby project.
-
-    .
-    ├── node_modules
-    ├── src
-    ├── .gitignore
-    ├── .prettierrc
-    ├── gatsby-browser.js
-    ├── gatsby-config.js
-    ├── gatsby-node.js
-    ├── gatsby-ssr.js
-    ├── LICENSE
-    ├── package-lock.json
-    ├── package.json
-    ├── .env.development
-    ├── .env.production
-    └── README.md
     
 ## 📃 Available Scripts
 
@@ -52,10 +32,10 @@ Builds the app for production.<br />
 
 ## 💻 Preview:
 ### Hero Section (Light Theme)
-<img src="https://i.ibb.co/nPmcYcR/portfolio-hero-light.jpg" alt="Hero Section (Light Theme)" />
+<img src="https://i.ibb.co/XZ8bCx0/portfolio-hero-light.jpg" alt="Hero Section (Light Theme)" />
 
 ### Hero Section (Dark Theme)
-<img src="https://i.ibb.co/VQBYPFY/portfolio-hero-dark.jpg" alt="Hero Section (Dark Theme)" />
+<img src="https://i.ibb.co/QJtyW0d/portfolio-hero-dark.jpg" alt="Hero Section (Dark Theme)" />
 
 ### About Section (Dark Theme)
 <img src="https://i.ibb.co/wYY31VS/portfolio-about.jpg" alt="About Section (Dark Theme)" />
@@ -67,4 +47,4 @@ Builds the app for production.<br />
 <img src="https://i.ibb.co/gF8WQbh/portfolio-more-projects.jpg" alt="More Projects Section (Dark Theme)" />
 
 ### Footer Section (Dark Theme)
-<img src="https://i.ibb.co/7X7Ktyp/portfolio-footer.jpg" alt="Footer Section (Dark Theme)" />
+<img src="https://i.ibb.co/WW8LLsj/portfolio-footer.jpg" alt="Footer Section (Dark Theme)" />
