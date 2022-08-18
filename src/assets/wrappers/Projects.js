@@ -67,7 +67,7 @@ const Wrapper = styled.section`
 
       h3,
       .tech-tags {
-        margin-bottom: 1rem;
+        margin-bottom: 1.6rem;
       }
 
       p span {
@@ -75,6 +75,7 @@ const Wrapper = styled.section`
       }
 
       .tech-tags {
+        text-align: center;
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
