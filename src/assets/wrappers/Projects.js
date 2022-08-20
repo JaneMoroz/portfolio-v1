@@ -1,18 +1,9 @@
 import styled from "styled-components"
 
 const Wrapper = styled.section`
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   row-gap: 1.6rem;
   h2 {
@@ -33,13 +24,11 @@ const Wrapper = styled.section`
       height: 100%;
       max-height: 50rem;
       overflow: hidden;
-      -webkit-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
       box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
 
       img {
         height: 100%;
         width: 100%;
-        -o-object-fit: cover;
         object-fit: cover;
       }
 
@@ -57,7 +46,6 @@ const Wrapper = styled.section`
       position: absolute;
       top: 0;
       right: 0;
-      -webkit-transform: translate(0, 50%);
       transform: translate(0, 50%);
       max-width: 55rem;
 
@@ -76,8 +64,6 @@ const Wrapper = styled.section`
 
       .tech-tags {
         text-align: center;
-        display: -webkit-box;
-        display: -ms-flexbox;
         display: flex;
         column-gap: 1rem;
         font-size: 1.4rem;
@@ -89,13 +75,10 @@ const Wrapper = styled.section`
         background: var(--color-background-2);
         color: var(--color-text-main);
         line-height: 1.5;
-        -webkit-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
         box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
       }
 
       .buttons {
-        display: -webkit-box;
-        display: -ms-flexbox;
         display: flex;
         column-gap: 1.6rem;
       }
@@ -122,7 +105,6 @@ const Wrapper = styled.section`
 
     .text-box {
       left: 0;
-      -webkit-transform: translate(0, 50%);
       transform: translate(0, 50%);
     }
   }
@@ -138,14 +120,12 @@ const Wrapper = styled.section`
 
     .project-right {
       .text-box {
-        -webkit-transform: translate(-2.4rem, 50%);
         transform: translate(-2.4rem, 50%);
       }
     }
 
     .project-left {
       .text-box {
-        -webkit-transform: translate(2.4rem, 50%);
         transform: translate(2.4rem, 50%);
       }
     }
@@ -169,7 +149,6 @@ const Wrapper = styled.section`
 
     .project-right {
       .text-box {
-        -webkit-transform: translate(0, 0);
         transform: translate(0, 0);
 
         h3,
@@ -183,7 +162,6 @@ const Wrapper = styled.section`
 
     .project-left {
       .text-box {
-        -webkit-transform: translate(0, 0);
         transform: translate(0, 0);
 
         h3,

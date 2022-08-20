@@ -16,7 +16,7 @@ import {
   smallCloud,
   smallCloudDarkMode,
 } from "../../assets/images"
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
+import { motion, useScroll, useTransform } from "framer-motion"
 import { useGlobalContext } from "../../context/context"
 import {
   fromBottomVariant,

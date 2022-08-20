@@ -12,14 +12,8 @@ const Wrapper = styled.div`
     border-radius: 50%;
 
     span {
-      display: -webkit-box;
-      display: -ms-flexbox;
       display: flex;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
       align-items: center;
-      -webkit-box-pack: center;
-      -ms-flex-pack: center;
       justify-content: center;
       font-size: 3rem;
       color: var(--color-light-pink);
