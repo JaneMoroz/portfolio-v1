@@ -6,6 +6,11 @@ import { lampVariant } from "../../utils/animation"
 
 const ToggleThemeButton = () => {
   const { theme, toggleTheme } = useGlobalContext()
+
+  if (theme === undefined) {
+    return <div></div>
+  }
+
   return (
     <button
       className="btn dark-light-mode-btn"
